@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1 class="underline">도서 목록</h1>
+  <div class="wrapper">
+    <h1>공지사항</h1>
     <div style="text-align: right">
-      <button @click="movePage">도서 등록</button>
+      <button @click="movePage">글쓰기</button>
     </div>
     <div v-if="articles.length">
       <table id="article-list">
@@ -83,4 +83,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.wrapper {
+  min-height: 100vh;
+}
+</style>
