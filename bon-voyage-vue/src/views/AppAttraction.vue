@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <div class="placeinfo-list-title">
+      <h2>원하는 대로 검색하기</h2>
+      <p>검색검색검색검색검색검색검색검색검색검색검색검색검색검색</p>
+    </div>
+    <SearchBox></SearchBox>
+    <GalleryBoardList></GalleryBoardList>
+  </div>
+</template>
+
+<script>
+import SearchBox from "@/components/common/SearchBox.vue";
+import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
+
+export default {
+  name: "AppAttraction",
+  components: {
+    SearchBox,
+    GalleryBoardList,
+  },
+  data() {
+    return {
+      message: "",
+    };
+  },
+  created() {},
+  methods: {},
+};
+</script>
+
+<style scoped>
+.placeinfo-list-title {
+  text-align: center;
+  margin: 120px 0 80px 0;
+}
+</style>

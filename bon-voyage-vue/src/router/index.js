@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import AppMain from "@/views/AppMain";
 import AppNotice from "@/views/AppNotice";
 import AppShareBoard from "@/views/AppShareBoard";
+import AppAttraction from "@/views/AppAttraction";
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
@@ -14,6 +15,11 @@ const routes = [
     path: "/",
     name: "main",
     component: AppMain,
+  },
+  {
+    path: "/attractions",
+    name: "attraction",
+    component: AppAttraction,
   },
   {
     path: "/share-boards",

@@ -11,7 +11,7 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'share-board' }">관광지</router-link>
+        <router-link :to="{ name: 'attraction' }">관광지</router-link>
         <router-link :to="{ name: 'share-board' }">공유게시판</router-link>
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: "TheHeaderNavBar",
   components: {},
   data() {
     return {};

@@ -9,6 +9,8 @@ import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+import "@/api/lib/fontAwesomeIcon.js"; // fontAwesomeIcon.js 불러옴
+
 Vue.config.productionTip = false;
 
 new Vue({

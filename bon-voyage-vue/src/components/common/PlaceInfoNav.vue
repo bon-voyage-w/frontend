@@ -1,16 +1,16 @@
 <template>
   <ul class="placeinfo-nav">
     <li>
-      <button>여행지</button>
-    </li>
-    <li>
-      <button>어쩌고</button>
+      <button>관광지</button>
     </li>
     <li>
       <button>숙박</button>
     </li>
     <li>
-      <button>렌트</button>
+      <button>음식점</button>
+    </li>
+    <li>
+      <button>여가</button>
     </li>
   </ul>
 </template>
