@@ -5,19 +5,25 @@
       <p>검색검색검색검색검색검색검색검색검색검색검색검색검색검색</p>
     </div>
     <SearchBox></SearchBox>
+    <MyLocationButton></MyLocationButton>
+    <TheMap></TheMap>
     <GalleryBoardList></GalleryBoardList>
   </div>
 </template>
 
 <script>
 import SearchBox from "@/components/common/SearchBox.vue";
+import TheMap from "@/components/common/TheMap.vue";
 import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
+import MyLocationButton from "@/components/common/item/MyLocationButton.vue";
 
 export default {
   name: "AppAttraction",
   components: {
     SearchBox,
+    TheMap,
     GalleryBoardList,
+    MyLocationButton,
   },
   data() {
     return {
