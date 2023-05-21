@@ -22,8 +22,7 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      //   script.src =
-      //   commit 전 수정
+
       script.src = process.env.VUE_APP_KAKAO_URL;
       document.head.appendChild(script);
     }
@@ -57,9 +56,9 @@ export default {
 
 <style scoped>
 #map {
-  width: 500px;
-  height: 400px;
+  width: 1000px;
+  height: 800px;
   margin: 50px auto;
-  position: relative;
+  border-radius: 10px;
 }
 </style>
