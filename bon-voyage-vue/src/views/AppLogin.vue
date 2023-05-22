@@ -8,7 +8,7 @@
           id="memberIdInput"
           class="input_text"
           ref="memberIdInput"
-          v-model.trim="user.id"
+          v-model="user.id"
           placeholder="아이디를 입력하세요."
         />
       </p>
@@ -19,7 +19,7 @@
           id="memberPasswordInput"
           class="input_text"
           ref="memberPasswordInput"
-          v-model.trim="user.pw"
+          v-model="user.pw"
           placeholder="패스워드를 입력하세요."
         />
       </p>
@@ -62,12 +62,12 @@ export default {
         this.$refs.memberPasswordInput.focus();
         return;
       }
+      console.log(this.user);
       await this.userConfirm(this.user);
-      let token = sessionStorage.getItem("access-token");
+      //let accessToken = sessionStorage.getItem("access-token");
       // console.log("1. confirm() token >> " + token);
       if (this.isLogin) {
-        console.log(token);
-        //await this.getUserInfo(token);
+        //await this.getUserInfo(accessToken);
         // console.log("4. confirm() userInfo :: ", this.userInfo);
         this.$router.push({ name: "main" });
       }

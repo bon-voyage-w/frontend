@@ -11,7 +11,11 @@
         <router-link :to="{ name: 'share-board' }">공유게시판</router-link>
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
-      <li>
+
+      <li v-if="userInfo">
+        <router-link :to="{ name: 'login' }">마이페이지</router-link>
+      </li>
+      <li v-else>
         <router-link :to="{ name: 'login' }">로그인</router-link>
         <router-link :to="{ name: 'main' }">회원가입</router-link>
       </li>

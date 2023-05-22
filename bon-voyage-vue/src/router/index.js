@@ -54,6 +54,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: AppLogin,
+  },
+  {
+    path: "/oauth/kakao/callback",
+    name: kakaoauth,
+    component: KakaoAuth,
   }
 ];
 
