@@ -1,20 +1,22 @@
 <template>
-  <button class="placeinfo-list-item">
+  <button class="placeinfo-list-item" @click="selectHouse">
     <img src="https://placekitten.com/300/300" alt="" />
     <div class="placeinfo-list-item-text">
-      <h3>국립 청태산자연휴양림</h3>
-      <p>강원도 횡성군 둔내면 청태산로 610</p>
+      <h3>{{ attraction.title }}</h3>
+      <p>{{ attraction.addr1 }}</p>
     </div>
   </button>
 </template>
 
 <script>
+// import { mapActions } from "vuex";
+
+// const attractionStore = "attractionStore";
+
 export default {
-  name: "PlaceInfoListItem",
-  data() {
-    return {
-      message: "",
-    };
+  name: "GalleryBoardListItem",
+  props: {
+    attraction: Object,
   },
 };
 </script>

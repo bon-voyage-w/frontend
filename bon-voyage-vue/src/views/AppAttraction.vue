@@ -22,11 +22,11 @@ export default {
     TheMap,
     GalleryBoardList,
   },
-  data() {
-    return {
-      message: "",
-    };
-  },
+  // data() {
+  //   return {
+  //     message: "",
+  //   };
+  // },
   created() {},
   methods: {},
 };

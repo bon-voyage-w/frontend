@@ -50,6 +50,7 @@ export default {
 }
 .placeinfo-nav li:hover {
   background-color: #eabb4d;
+  color: red;
   font-weight: bold;
 }
 </style>
