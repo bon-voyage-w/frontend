@@ -3,11 +3,7 @@
     <ul class="nav-bar-menu">
       <li>
         <router-link :to="{ name: 'main' }">
-          <img
-            class="main-logo"
-            src="@/assets/img/logo_new.png"
-            alt="로고이미지"
-          />
+          <img class="main-logo" src="@/assets/img/logo_new.png" alt="로고이미지" />
         </router-link>
       </li>
       <li>
@@ -16,7 +12,7 @@
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'main' }">로그인</router-link>
+        <router-link :to="{ name: 'login' }">로그인</router-link>
         <router-link :to="{ name: 'main' }">회원가입</router-link>
       </li>
     </ul>

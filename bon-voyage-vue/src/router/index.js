@@ -7,6 +7,7 @@ import AppAttraction from "@/views/AppAttraction";
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
+import AppLogin from "@/views/AppLogin";
 
 Vue.use(VueRouter);
 
@@ -49,6 +50,11 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/login",
+    name: "login",
+    component: AppLogin,
+  }
 ];
 
 const router = new VueRouter({
