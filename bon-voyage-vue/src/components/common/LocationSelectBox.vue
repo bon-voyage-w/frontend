@@ -1,7 +1,15 @@
 <template>
   <div class="location-select-box">
-    <b-form-select v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
-    <b-form-select v-model="gugunCode" :options="guguns" @change="searchAttraction"></b-form-select>
+    <b-form-select
+      v-model="sidoCode"
+      :options="sidos"
+      @change="relatedGugunList"
+    ></b-form-select>
+    <b-form-select
+      v-model="gugunCode"
+      :options="guguns"
+      @change="searchAttraction"
+    ></b-form-select>
   </div>
 </template>
 
@@ -23,24 +31,31 @@ export default {
     ...mapState(attractionStore, ["sidos", "guguns", "attractions"]),
   },
   created() {
-    this.getAllLocation();
-    this.getSido();
+    // empty
+    this.CLEAR_SIDO_LIST();
+    this.CLEAR_GUGUN_LIST();
+    // state에 시도, 구군 저장
+    this.getAllSidoList();
+    // this.getAllGugunList();
   },
   methods: {
-    ...mapActions(attractionStore, ["getAllLocation", "getSido", "getGugun", "getAttractionList"]),
+    ...mapActions(attractionStore, [
+      "getAllSidoList",
+      // "getAllGugunList",
+      "getRelatedGugun",
+      "getAttractionList",
+    ]),
     ...mapMutations(attractionStore, [
-      // "CLEAR_SIDO_LIST",
-      // "CLEAR_GUGUN_LIST",
+      "CLEAR_SIDO_LIST",
+      "CLEAR_GUGUN_LIST",
       "CLEAR_ATTRACTION_LIST",
     ]),
-    // sidoList() {
-    //   this.getSido();
-    // },
-    gugunList() {
-      console.log(this.sidoCode);
-      // this.CLEAR_GUGUN_LIST();
+
+    relatedGugunList() {
+      this.CLEAR_GUGUN_LIST;
       this.gugunCode = null;
-      if (this.sidoCode) this.getGugun(this.sidoCode);
+      console.log(">>>>>>>>>>>>>> ", this.sidoCode);
+      if (this.sidoCode) this.getRelatedGugun(this.sidoCode);
     },
     searchAttraction() {
       if (this.gugunCode) this.getattractionList(this.gugunCode);

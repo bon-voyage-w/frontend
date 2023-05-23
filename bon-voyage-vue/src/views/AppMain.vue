@@ -2,8 +2,8 @@
   <div>
     <the-carousel></the-carousel>
     <div class="placeinfo-list-title">
-      <h2>이 지역은 이 숙소!</h2>
-      <p>SNS에서 유명한 펜션부터 5성급 호텔까지 여행은 본보야지에서</p>
+      <h2>오늘의 추천 여행지</h2>
+      <p>SNS에서 유명한 펜션부터 5성급 호텔까지 여행은 본 보야지에서!</p>
     </div>
     <gallery-board-list></gallery-board-list>
   </div>

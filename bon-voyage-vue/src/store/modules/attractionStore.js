@@ -1,4 +1,9 @@
-import { sidoList, gugunList, attractionList } from "@/api/attraction.js";
+import {
+  allSidoList,
+  // allGugunList,
+  relatedGugunList,
+  attractionList,
+} from "@/api/attraction.js";
 
 const attractionStore = {
   namespaced: true,
@@ -10,33 +15,28 @@ const attractionStore = {
   },
   getters: {},
   mutations: {
-    // CLEAR_SIDO_LIST(state) {
-    //   state.sidos = [{ value: null, text: " --------- 시 --------- " }];
-    // },
-    // CLEAR_GUGUN_LIST(state) {
-    //   state.guguns = [{ value: null, text: " --------- 도 --------- " }];
-    // },
-    GET_ALL_SIDO_INFO(state, data) {
-      var sidoList = data.sidoDto;
-      data.forEach((gugun) => {
-        state.guguns.push({ value: gugun.gugunCode, text: gugun.gugunName });
-      });
-      data.sidoDto.forEach((sido) => {
-        state.sidos.push({ value: sido.sidoCode, text: sido.sidoName });
-      });
+    // empty
+    CLEAR_SIDO_LIST(state) {
+      state.sidos = [{ value: null, text: " --------- 시 --------- " }];
+    },
+    CLEAR_GUGUN_LIST(state) {
+      state.guguns = [{ value: null, text: " --------- 도 --------- " }];
     },
     CLEAR_ATTRACTION_LIST(state) {
       state.attractions = [];
       state.attraction = null;
     },
-    SET_SIDO_LIST(state, sidos) {
-      sidos.forEach((sido) => {
-        state.sidos.push({ value: sido.sidoCode, text: sido.sidoName });
+    // get
+    GET_ALL_SIDO_LIST(state, data) {
+      data.forEach((data) => {
+        state.sidos.push({ value: data.sidoCode, text: data.sidoName });
+        // console.log(data.sidoCode, data.sidoName);
       });
     },
-    SET_GUGUN_LIST(state, guguns) {
-      guguns.forEach((gugun) => {
-        state.guguns.push({ value: gugun.gugunCode, text: gugun.gugunName });
+    GET_RELATED_GUGUN_LIST(state, data) {
+      data.forEach((data) => {
+        state.guguns.push({ value: data.gugunCode, text: data.gugunName });
+        console.log(data.gugunCode, data.gugunName);
       });
     },
     SET_ATTRACTION_LIST(state, attractions) {
@@ -47,32 +47,23 @@ const attractionStore = {
     },
   },
   actions: {
-    getAllLocation: ({ commit }) => {
-      locationList(
+    // get
+    getAllSidoList: ({ commit }) => {
+      allSidoList(
         ({ data }) => {
-          commit("SET_SIDO_LIST", data);
+          commit("GET_ALL_SIDO_LIST", data);
         },
         (error) => {
           console.log(error);
         }
       );
     },
-    getSido: ({ commit }) => {
-      sidoList(
-        ({ data }) => {
-          commit("SET_SIDO_LIST", data);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    },
-    getGugun: ({ commit }, sidoCode) => {
-      const params = { sido: sidoCode };
-      gugunList(
+    getRelatedGugun: ({ commit }, sidoCode) => {
+      const params = { sidoCode: sidoCode };
+      relatedGugunList(
         params,
         ({ data }) => {
-          commit("SET_GUGUN_LIST", data);
+          commit("GET_RELATED_GUGUN_LIST", data);
         },
         (error) => {
           console.log(error);
@@ -80,16 +71,12 @@ const attractionStore = {
       );
     },
     getAttractionList: ({ commit }, gugunCode) => {
-      const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
-      const params = {
-        LAWD_CD: gugunCode,
-        DEAL_YMD: "202207",
-        serviceKey: decodeURIComponent(SERVICE_KEY),
-      };
+      const params = { gugunCode: gugunCode };
+
       attractionList(
         params,
         ({ data }) => {
-          commit("GET_ALL_SIDO_INFO", data);
+          commit("SET_ATTRACTION_LIST", data);
         },
         (error) => {
           console.log(error);
@@ -97,7 +84,6 @@ const attractionStore = {
       );
     },
     detailAttraction: ({ commit }, attraction) => {
-      // 나중에 house.일련번호를 이용하여 API 호출
       commit("SET_DETAIL_ATTRACTION", attraction);
     },
   },

@@ -33,7 +33,7 @@ export default {
 <style scoped>
 .placeinfo-nav {
   display: flex;
-  width: 80%;
+  width: 1000px;
   margin: 60px auto;
   gap: 20px;
   padding: 0;
