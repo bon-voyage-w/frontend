@@ -6,8 +6,8 @@
 
     <div class="placeinfo-list-contents">
       <GalleryBoardListItem
-        v-for="contentId in attractions"
-        :key="contentId"
+        v-for="attraction in attractions"
+        :key="attraction.contentId"
         :attraction="attraction"
       />
     </div>
@@ -18,9 +18,7 @@
 import LocationSelectBox from "@/components/common/LocationSelectBox.vue";
 import PlaceInfoNav from "@/components/common/PlaceInfoNav";
 import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
-import { mapState } from "vuex";
-
-const attractionStore = "attractionStore";
+import http from "@/api/http";
 
 export default {
   name: "GalleryBoardList",
@@ -30,10 +28,16 @@ export default {
     GalleryBoardListItem,
   },
   data() {
-    return {};
+    return {
+      attractions: [],
+    };
   },
-  computed: {
-    ...mapState(attractionStore, ["attractions"]),
+  created() {
+    http.get(`/attractions`).then(({ data }) => {
+      this.attractions = data.content;
+    });
+
+    console.log(">>>>>>>>>>>>> 리스트 받아와져라");
   },
 };
 </script>

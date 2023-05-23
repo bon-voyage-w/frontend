@@ -1,6 +1,6 @@
 <template>
   <button class="placeinfo-list-item" @click="selectHouse">
-    <img src="https://placekitten.com/300/300" alt="" />
+    <img :src="attraction.firstImage" alt="" />
     <div class="placeinfo-list-item-text">
       <h3>{{ attraction.title }}</h3>
       <p>{{ attraction.addr1 }}</p>
@@ -9,10 +9,6 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
-
-// const attractionStore = "attractionStore";
-
 export default {
   name: "GalleryBoardListItem",
   props: {
