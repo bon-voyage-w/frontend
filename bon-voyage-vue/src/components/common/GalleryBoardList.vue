@@ -1,9 +1,5 @@
 <template>
   <div class="placeinfo-list">
-    <!-- 필터링용 -->
-    <LocationSelectBox />
-    <place-info-nav></place-info-nav>
-
     <div class="placeinfo-list-contents">
       <GalleryBoardListItem
         v-for="attraction in attractions"
@@ -15,16 +11,12 @@
 </template>
 
 <script>
-import LocationSelectBox from "@/components/common/LocationSelectBox.vue";
-import PlaceInfoNav from "@/components/common/PlaceInfoNav";
 import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
 import http from "@/api/http";
 
 export default {
   name: "GalleryBoardList",
   components: {
-    LocationSelectBox,
-    PlaceInfoNav,
     GalleryBoardListItem,
   },
   data() {
@@ -36,8 +28,6 @@ export default {
     http.get(`/attractions`).then(({ data }) => {
       this.attractions = data.content;
     });
-
-    console.log(">>>>>>>>>>>>> 리스트 받아와져라");
   },
 };
 </script>

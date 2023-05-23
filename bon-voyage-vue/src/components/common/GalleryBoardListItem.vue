@@ -1,5 +1,5 @@
 <template>
-  <button class="placeinfo-list-item" @click="selectHouse">
+  <button class="placeinfo-list-item" @click="selectAttraction">
     <img :src="attraction.firstImage" alt="" />
     <div class="placeinfo-list-item-text">
       <h3>{{ attraction.title }}</h3>
@@ -13,6 +13,9 @@ export default {
   name: "GalleryBoardListItem",
   props: {
     attraction: Object,
+  },
+  methods: {
+    selectAttraction() {},
   },
 };
 </script>

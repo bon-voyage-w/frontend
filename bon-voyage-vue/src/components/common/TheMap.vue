@@ -1,8 +1,6 @@
 <template>
   <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">
-      주변 관광지 보기
-    </button>
+    <button class="my-location" @click="currentLocation()">주변 관광지 보기</button>
     <div id="map"></div>
   </div>
 </template>
@@ -33,8 +31,8 @@ export default {
       const script = document.createElement("script");
       script.src =
         "//dapi.kakao.com/v2/maps/sdk.js?appkey=" +
-        // process.env.VUE_APP_KAKAO_MAP_API_KEY +
-        "de06e60175b275d88bbc9d4797d1704b" +
+        process.env.VUE_APP_KAKAO_MAP_API_KEY +
+        // "de06e60175b275d88bbc9d4797d1704b" +
         "&autoload=false";
       /* global kakao */
       script.onload = () => window.kakao.maps.load(this.loadMap);
@@ -85,6 +83,28 @@ export default {
         });
       }
     },
+    currentLocation() {
+      var tmpMap = this.map;
+
+      if (navigator.geolocation) {
+        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+          var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+
+          // 마커와 인포윈도우를 표시합니다
+          new kakao.maps.Marker({
+            map: tmpMap,
+            position: locPosition,
+          });
+
+          // 지도 중심좌표를 접속위치로 변경합니다
+          tmpMap.setCenter(locPosition);
+        });
+      }
+    },
   },
 };
 </script>
@@ -92,16 +112,14 @@ export default {
 <style scoped>
 .wrap-map {
   position: relative;
-
   width: 800px;
-  margin: 50px auto;
+  margin: 100px auto;
 }
 #map {
   width: 100%;
   height: 500px;
   border-radius: 10px;
 }
-
 .my-location {
   position: absolute;
   top: 10px;

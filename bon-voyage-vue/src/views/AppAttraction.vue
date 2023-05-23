@@ -5,13 +5,17 @@
       <p>검색검색검색검색검색검색검색검색검색검색검색검색검색검색</p>
     </div>
     <SearchBox></SearchBox>
+    <LocationSelectBox />
     <TheMap></TheMap>
+    <place-info-nav></place-info-nav>
     <GalleryBoardList></GalleryBoardList>
   </div>
 </template>
 
 <script>
 import SearchBox from "@/components/common/SearchBox.vue";
+import LocationSelectBox from "@/components/common/LocationSelectBox.vue";
+import PlaceInfoNav from "@/components/common/PlaceInfoNav";
 import TheMap from "@/components/common/TheMap.vue";
 import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
 
@@ -19,6 +23,8 @@ export default {
   name: "AppAttraction",
   components: {
     SearchBox,
+    LocationSelectBox,
+    PlaceInfoNav,
     TheMap,
     GalleryBoardList,
   },
