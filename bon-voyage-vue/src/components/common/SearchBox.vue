@@ -14,9 +14,7 @@ export default {
   name: "SearchBox",
   components: {},
   data() {
-    return {
-      message: "",
-    };
+    return {};
   },
   created() {},
   methods: {},

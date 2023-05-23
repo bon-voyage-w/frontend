@@ -1,59 +1,57 @@
 <template>
   <div class="location-select-box">
-    <b-dropdown id="dropdown-1" variant="light" text="---------- 시 ---------">
-      <b-dropdown-item>서울</b-dropdown-item>
-      <b-dropdown-item>인천</b-dropdown-item>
-      <b-dropdown-item>대전</b-dropdown-item>
-      <b-dropdown-item>대구</b-dropdown-item>
-      <b-dropdown-item>광주</b-dropdown-item>
-      <b-dropdown-item>부산</b-dropdown-item>
-      <b-dropdown-item>울산</b-dropdown-item>
-      <b-dropdown-item>세종특별자치시</b-dropdown-item>
-      <b-dropdown-item>경기도</b-dropdown-item>
-      <b-dropdown-item>강원도</b-dropdown-item>
-      <b-dropdown-item>충청북도</b-dropdown-item>
-      <b-dropdown-item>충청남도</b-dropdown-item>
-      <b-dropdown-item>경상북도</b-dropdown-item>
-      <b-dropdown-item>경상남도</b-dropdown-item>
-      <b-dropdown-item>전라북도</b-dropdown-item>
-      <b-dropdown-item>전라남도</b-dropdown-item>
-      <b-dropdown-item>제주도</b-dropdown-item>
-    </b-dropdown>
-
-    <div>
-      <b-dropdown
-        id="dropdown-2"
-        variant="light"
-        text="---------- 도 ---------"
-      >
-        <b-dropdown-item>First Action</b-dropdown-item>
-        <b-dropdown-item>Second Action</b-dropdown-item>
-        <b-dropdown-item>Third Action</b-dropdown-item>
-      </b-dropdown>
-    </div>
+    <b-form-select v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
+    <b-form-select v-model="gugunCode" :options="guguns" @change="searchAttraction"></b-form-select>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from "vuex";
+
+const attractionStore = "attractionStore";
+
 export default {
   name: "LocationSelectBox",
   components: {},
   data() {
     return {
-      message: "",
+      sidoCode: null,
+      gugunCode: null,
     };
+  },
+  computed: {
+    ...mapState(attractionStore, ["sidos", "guguns", "attractions"]),
+  },
+  created() {
+    this.getAllLocation();
+    this.getSido();
+  },
+  methods: {
+    ...mapActions(attractionStore, ["getAllLocation", "getSido", "getGugun", "getAttractionList"]),
+    ...mapMutations(attractionStore, [
+      // "CLEAR_SIDO_LIST",
+      // "CLEAR_GUGUN_LIST",
+      "CLEAR_ATTRACTION_LIST",
+    ]),
+    // sidoList() {
+    //   this.getSido();
+    // },
+    gugunList() {
+      console.log(this.sidoCode);
+      // this.CLEAR_GUGUN_LIST();
+      this.gugunCode = null;
+      if (this.sidoCode) this.getGugun(this.sidoCode);
+    },
+    searchAttraction() {
+      if (this.gugunCode) this.getattractionList(this.gugunCode);
+    },
   },
 };
 </script>
 
 <style scoped>
 .location-select-box {
-  margin-bottom: 60px;
-
-  display: flex;
-  justify-content: space-around;
-
-  margin-left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  margin: 50px 0;
 }
 </style>

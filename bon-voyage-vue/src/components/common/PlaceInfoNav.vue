@@ -1,6 +1,9 @@
 <template>
   <ul class="placeinfo-nav">
     <li>
+      <button>전체</button>
+    </li>
+    <li>
       <button>관광지</button>
     </li>
     <li>
@@ -20,9 +23,7 @@ export default {
   name: "PlaceInfoNav",
   components: {},
   data() {
-    return {
-      message: "",
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -39,7 +40,7 @@ export default {
 }
 
 .placeinfo-nav li {
-  width: calc(100% / 4);
+  width: calc(100% / 5);
   text-align: center;
   padding: 8px 0;
 

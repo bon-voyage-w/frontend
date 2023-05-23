@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="placeinfo-list-title">
-      <h2>원하는 대로 검색하기</h2>
-      <p>검색검색검색검색검색검색검색검색검색검색검색검색검색검색</p>
+      <h2>여행지 검색</h2>
+      <p>원하는 여행지를 쉽게 찾아볼 수 있어요</p>
     </div>
-    <SearchBox></SearchBox>
     <LocationSelectBox />
+    <SearchBox></SearchBox>
+
     <TheMap></TheMap>
     <place-info-nav></place-info-nav>
     <GalleryBoardList></GalleryBoardList>
