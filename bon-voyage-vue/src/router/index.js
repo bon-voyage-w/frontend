@@ -8,6 +8,7 @@ import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
 import AppLogin from "@/views/AppLogin";
+import KakaoAuth from "@/components/auth/KakaoAuth"
 
 Vue.use(VueRouter);
 
@@ -57,7 +58,7 @@ const routes = [
   },
   {
     path: "/oauth/kakao/callback",
-    name: kakaoauth,
+    name: "kakaoauth",
     component: KakaoAuth,
   }
 ];

@@ -26,7 +26,13 @@
       <p class="buttons">
         <button @click.prevent="doLogin" class="button blue">로그인</button>
 
-        <button @click="doKakaoLogin" class="button">카카오 로그인</button>
+        <button class="button kakao">
+          <a
+            href="https://kauth.kakao.com/oauth/authorize?client_id=67a48192fd15d10448dbca842d9a9af8&redirect_uri=http://localhost:8080/oauth/kakao/callback&response_type=code"
+          >
+            카카오 로그인</a
+          >
+        </button>
       </p>
     </form>
     <p>{{ errorMessage }}</p>
@@ -67,23 +73,13 @@ export default {
       //let accessToken = sessionStorage.getItem("access-token");
       // console.log("1. confirm() token >> " + token);
       if (this.isLogin) {
-        //await this.getUserInfo(accessToken);
+        await this.getUserInfo();
         // console.log("4. confirm() userInfo :: ", this.userInfo);
         this.$router.push({ name: "main" });
       }
     },
     doCancel() {
       this.$router.push("../");
-    },
-    async doKakaoLogin() {
-      this.userConfirmKakao();
-      let token = sessionStorage.getItem("access-token");
-      if (this.isLogin) {
-        console.log(token);
-        //await this.getUserInfo(token);
-        // console.log("4. confirm() userInfo :: ", this.userInfo);
-        this.$router.push({ name: "main" });
-      }
     },
   },
   mounted() {
@@ -134,5 +130,10 @@ export default {
   color: #fff;
   border-color: #0099d2 !important;
   background: #0099d2 !important;
+}
+.buttons > .button.kakao {
+  color: #fff;
+  border-color: #eabb4d !important;
+  background: #eabb4d !important;
 }
 </style>
