@@ -1,6 +1,8 @@
 <template>
   <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">주변 관광지 보기</button>
+    <button class="my-location" @click="currentLocation()">
+      주변 관광지 보기
+    </button>
     <div id="map"></div>
   </div>
 </template>
@@ -32,7 +34,6 @@ export default {
       script.src =
         "//dapi.kakao.com/v2/maps/sdk.js?appkey=" +
         process.env.VUE_APP_KAKAO_MAP_API_KEY +
-        // "de06e60175b275d88bbc9d4797d1704b" +
         "&autoload=false";
       /* global kakao */
       script.onload = () => window.kakao.maps.load(this.loadMap);
