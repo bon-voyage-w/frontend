@@ -1,12 +1,14 @@
 <template>
   <div class="location-select-box">
+    <div class="wrap-sido" @click="resetGugunList">
+      <b-form-select
+        v-model="conditions.sidoCode"
+        :options="sidos"
+        @change="relatedGugunList"
+      ></b-form-select>
+    </div>
     <b-form-select
-      v-model="sidoCode"
-      :options="sidos"
-      @change="relatedGugunList"
-    ></b-form-select>
-    <b-form-select
-      v-model="gugunCode"
+      v-model="conditions.gugunCode"
       :options="guguns"
       @change="searchAttraction"
     ></b-form-select>
@@ -22,43 +24,49 @@ export default {
   name: "LocationSelectBox",
   components: {},
   data() {
-    return {
-      sidoCode: null,
-      gugunCode: null,
-    };
+    return {};
   },
   computed: {
-    ...mapState(attractionStore, ["sidos", "guguns", "attractions"]),
+    ...mapState(attractionStore, [
+      "sidos",
+      "guguns",
+      "attractions",
+      "selectedLocation",
+      "conditions",
+    ]),
   },
   created() {
     // empty
     this.CLEAR_SIDO_LIST();
     this.CLEAR_GUGUN_LIST();
-    // state에 시도, 구군 저장
+    // state에 시도 저장
     this.getAllSidoList();
-    // this.getAllGugunList();
   },
   methods: {
-    ...mapActions(attractionStore, [
-      "getAllSidoList",
-      // "getAllGugunList",
-      "getRelatedGugun",
-      "getAttractionList",
-    ]),
+    ...mapActions(attractionStore, ["getAllSidoList", "getRelatedGugun", "getAttractionList"]),
     ...mapMutations(attractionStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_ATTRACTION_LIST",
+      "SELECT_LOCATION",
     ]),
 
     relatedGugunList() {
+      this.SELECT_LOCATION;
       this.CLEAR_GUGUN_LIST;
       this.gugunCode = null;
-      console.log(">>>>>>>>>>>>>> ", this.sidoCode);
-      if (this.sidoCode) this.getRelatedGugun(this.sidoCode);
+      if (this.conditions.sidoCode) this.getRelatedGugun(this.conditions.sidoCode);
     },
     searchAttraction() {
+<<<<<<< HEAD
       if (this.gugunCode) this.getAttractionList(this.sidoCode, this.gugunCode);
+=======
+      if (this.conditions.gugunCode) this.getAttractionList(this.conditions);
+    },
+    resetGugunList() {
+      this.CLEAR_GUGUN_LIST;
+      this.gugunCode = null;
+>>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
     },
   },
 };
@@ -68,5 +76,8 @@ export default {
 .location-select-box {
   text-align: center;
   margin: 50px 0;
+}
+.wrap-sido {
+  display: inline-block;
 }
 </style>

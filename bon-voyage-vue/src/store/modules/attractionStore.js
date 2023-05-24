@@ -1,8 +1,8 @@
 import {
   allSidoList,
-  // allGugunList,
   relatedGugunList,
   attractionList,
+  allAttractionList,
 } from "@/api/attraction.js";
 
 const attractionStore = {
@@ -12,6 +12,13 @@ const attractionStore = {
     guguns: [{ value: null, text: " --------- 도 --------- " }],
     attractions: [],
     attraction: null,
+    selectedLocation: [],
+    conditions: {
+      sidoCode: null,
+      gugunCode: null,
+      keyword: null,
+      category: null,
+    },
   },
   getters: {},
   mutations: {
@@ -30,15 +37,14 @@ const attractionStore = {
     GET_ALL_SIDO_LIST(state, data) {
       data.forEach((data) => {
         state.sidos.push({ value: data.sidoCode, text: data.sidoName });
-        // console.log(data.sidoCode, data.sidoName);
       });
     },
     GET_RELATED_GUGUN_LIST(state, data) {
       data.forEach((data) => {
         state.guguns.push({ value: data.gugunCode, text: data.gugunName });
-        console.log(data.gugunCode, data.gugunName);
       });
     },
+
     SET_ATTRACTION_LIST(state, attractions) {
       state.attractions = attractions;
     },
@@ -70,6 +76,7 @@ const attractionStore = {
         }
       );
     },
+<<<<<<< HEAD
     getAttractionList: ({ commit }, { sidoCode, gugunCode }) => {
       const params = { sidoCode: sidoCode, gugunCode: gugunCode };
       console.log(
@@ -77,8 +84,20 @@ const attractionStore = {
         sidoCode,
         gugunCode
       );
+=======
+    getAllAttractionList: ({ commit }) =>
+      allAttractionList(
+        ({ data }) => {
+          commit("SET_ATTRACTION_LIST", data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      ),
+    getAttractionList: ({ commit }, loc) => {
+>>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
       attractionList(
-        params,
+        loc,
         ({ data }) => {
           commit("SET_ATTRACTION_LIST", data);
         },

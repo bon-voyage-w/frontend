@@ -1,6 +1,6 @@
 <template>
   <button class="placeinfo-list-item" @click="selectAttraction">
-    <img :src="attraction.firstImage" alt="" />
+    <img :src="attraction.firstImage" alt="" @error="replaceNoImg" />
     <div class="placeinfo-list-item-text">
       <h3>{{ attraction.title }}</h3>
       <p>{{ attraction.addr1 }}</p>
@@ -16,6 +16,9 @@ export default {
   },
   methods: {
     selectAttraction() {},
+    replaceNoImg(e) {
+      e.target.src = "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
+    },
   },
 };
 </script>

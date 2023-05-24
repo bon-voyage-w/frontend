@@ -1,6 +1,9 @@
 <template>
   <div class="board-write">
-    <h2>글 작성하기</h2>
+    <div class="placeinfo-list-title">
+      <h2>공지사항</h2>
+      <p>글쓰기</p>
+    </div>
     <b-form-input id="input-default" placeholder="제목을 입력하세요."></b-form-input>
 
     <b-form-textarea
@@ -13,7 +16,7 @@
     ></b-form-textarea>
 
     <b-button class="board-write-btn" href="#" variant="outline-primary">등록</b-button>
-    <pre>{{ text.length }}/1000</pre>
+    <!-- <pre>{{ text.length }}/1000</pre> -->
   </div>
 </template>
 
@@ -30,8 +33,8 @@ export default {
 
 <style>
 .board-write {
-  max-width: 80%;
-  margin: 20px auto;
+  width: 1000px;
+  margin: 50px auto;
 }
 .board-write h2 {
   text-align: center;
@@ -41,5 +44,9 @@ export default {
 }
 .board-write .board-write-btn {
   float: right;
+}
+.placeinfo-list-title {
+  text-align: center;
+  margin: 120px 0 80px 0;
 }
 </style>

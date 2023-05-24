@@ -1,8 +1,6 @@
 <template>
   <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">
-      주변 관광지 보기
-    </button>
+    <button class="my-location" @click="currentLocation()">주변 관광지 보기</button>
     <div id="map"></div>
   </div>
 </template>
@@ -18,6 +16,7 @@ export default {
       markers: [],
     };
   },
+<<<<<<< HEAD
   watch: {
     attractions() {
       console.log("관광지 >>>>>>>> ", this.chargers);
@@ -26,6 +25,19 @@ export default {
         let obj = {};
         obj.title = charger.statNm;
         obj.latlng = new kakao.maps.LatLng(charger.lat, charger.lng);
+=======
+  props: {
+    attractions: [],
+  },
+  watch: {
+    attractions() {
+      console.log(">>>>>>>>>>>>> 관광지 ::: ", this.attractions.content);
+      this.positions = [];
+      this.attractions.content.forEach((attraction) => {
+        let obj = {};
+        obj.title = attraction.title;
+        obj.latlng = new kakao.maps.LatLng(attraction.latitude, attraction.longitude);
+>>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
 
         this.positions.push(obj);
       });
