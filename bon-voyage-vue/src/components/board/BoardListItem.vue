@@ -7,8 +7,8 @@
       </router-link>
     </td>
     <td>{{ article.userName }}</td>
-    <td>{{ article.hit }}</td>
     <td>{{ article.registerTime }}</td>
+    <td>{{ article.hit }}</td>
   </tr>
 </template>
 
@@ -21,4 +21,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+tr td {
+  padding: 8px;
+  box-shadow: 0 1px 0 0 #ccc;
+}
+tr td:not(:nth-child(2), :nth-child(3)) {
+  text-align: center;
+}
+</style>

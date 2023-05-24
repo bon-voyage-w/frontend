@@ -13,6 +13,12 @@ const attractionStore = {
     attractions: [],
     attraction: null,
     selectedLocation: [],
+    conditions: {
+      sidoCode: null,
+      gugunCode: null,
+      keyword: null,
+      category: null,
+    },
   },
   getters: {},
   mutations: {

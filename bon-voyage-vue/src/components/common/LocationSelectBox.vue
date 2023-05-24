@@ -2,13 +2,13 @@
   <div class="location-select-box">
     <div class="wrap-sido" @click="resetGugunList">
       <b-form-select
-        v-model="loc.sidoCode"
+        v-model="conditions.sidoCode"
         :options="sidos"
         @change="relatedGugunList"
       ></b-form-select>
     </div>
     <b-form-select
-      v-model="loc.gugunCode"
+      v-model="conditions.gugunCode"
       :options="guguns"
       @change="searchAttraction"
     ></b-form-select>
@@ -24,15 +24,16 @@ export default {
   name: "LocationSelectBox",
   components: {},
   data() {
-    return {
-      loc: {
-        sidoCode: null,
-        gugunCode: null,
-      },
-    };
+    return {};
   },
   computed: {
-    ...mapState(attractionStore, ["sidos", "guguns", "attractions", "selectedLocation"]),
+    ...mapState(attractionStore, [
+      "sidos",
+      "guguns",
+      "attractions",
+      "selectedLocation",
+      "conditions",
+    ]),
   },
   created() {
     // empty
@@ -54,10 +55,10 @@ export default {
       this.SELECT_LOCATION;
       this.CLEAR_GUGUN_LIST;
       this.gugunCode = null;
-      if (this.loc.sidoCode) this.getRelatedGugun(this.loc.sidoCode);
+      if (this.conditions.sidoCode) this.getRelatedGugun(this.conditions.sidoCode);
     },
     searchAttraction() {
-      if (this.loc.gugunCode) this.getAttractionList(this.loc);
+      if (this.conditions.gugunCode) this.getAttractionList(this.conditions);
     },
     resetGugunList() {
       this.CLEAR_GUGUN_LIST;

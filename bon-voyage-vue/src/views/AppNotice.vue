@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="placeinfo-list-title">
+    <!-- <div class="placeinfo-list-title">
       <h2>공지사항</h2>
       <p>문의글은 1:1 문의 게시판에 남겨주세요</p>
-    </div>
+    </div> -->
     <router-view></router-view>
   </div>
 </template>
