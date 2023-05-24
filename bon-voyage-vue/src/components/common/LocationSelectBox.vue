@@ -1,12 +1,14 @@
 <template>
   <div class="location-select-box">
+    <div class="wrap-sido" @click="resetGugunList">
+      <b-form-select
+        v-model="loc.sidoCode"
+        :options="sidos"
+        @change="relatedGugunList"
+      ></b-form-select>
+    </div>
     <b-form-select
-      v-model="sidoCode"
-      :options="sidos"
-      @change="relatedGugunList"
-    ></b-form-select>
-    <b-form-select
-      v-model="gugunCode"
+      v-model="loc.gugunCode"
       :options="guguns"
       @change="searchAttraction"
     ></b-form-select>
@@ -23,42 +25,43 @@ export default {
   components: {},
   data() {
     return {
-      sidoCode: null,
-      gugunCode: null,
+      loc: {
+        sidoCode: null,
+        gugunCode: null,
+      },
     };
   },
   computed: {
-    ...mapState(attractionStore, ["sidos", "guguns", "attractions"]),
+    ...mapState(attractionStore, ["sidos", "guguns", "attractions", "selectedLocation"]),
   },
   created() {
     // empty
     this.CLEAR_SIDO_LIST();
     this.CLEAR_GUGUN_LIST();
-    // state에 시도, 구군 저장
+    // state에 시도 저장
     this.getAllSidoList();
-    // this.getAllGugunList();
   },
   methods: {
-    ...mapActions(attractionStore, [
-      "getAllSidoList",
-      // "getAllGugunList",
-      "getRelatedGugun",
-      "getAttractionList",
-    ]),
+    ...mapActions(attractionStore, ["getAllSidoList", "getRelatedGugun", "getAttractionList"]),
     ...mapMutations(attractionStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_ATTRACTION_LIST",
+      "SELECT_LOCATION",
     ]),
 
     relatedGugunList() {
+      this.SELECT_LOCATION;
       this.CLEAR_GUGUN_LIST;
       this.gugunCode = null;
-      console.log(">>>>>>>>>>>>>> ", this.sidoCode);
-      if (this.sidoCode) this.getRelatedGugun(this.sidoCode);
+      if (this.loc.sidoCode) this.getRelatedGugun(this.loc.sidoCode);
     },
     searchAttraction() {
-      if (this.gugunCode) this.getattractionList(this.gugunCode);
+      if (this.loc.gugunCode) this.getAttractionList(this.loc);
+    },
+    resetGugunList() {
+      this.CLEAR_GUGUN_LIST;
+      this.gugunCode = null;
     },
   },
 };
@@ -68,5 +71,8 @@ export default {
 .location-select-box {
   text-align: center;
   margin: 50px 0;
+}
+.wrap-sido {
+  display: inline-block;
 }
 </style>

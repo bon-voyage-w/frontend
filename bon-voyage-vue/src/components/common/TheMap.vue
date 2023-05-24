@@ -1,8 +1,6 @@
 <template>
   <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">
-      주변 관광지 보기
-    </button>
+    <button class="my-location" @click="currentLocation()">주변 관광지 보기</button>
     <div id="map"></div>
   </div>
 </template>
@@ -17,6 +15,23 @@ export default {
       positions: [],
       markers: [],
     };
+  },
+  props: {
+    attractions: [],
+  },
+  watch: {
+    attractions() {
+      console.log(">>>>>>>>>>>>> 관광지 ::: ", this.attractions.content);
+      this.positions = [];
+      this.attractions.content.forEach((attraction) => {
+        let obj = {};
+        obj.title = attraction.title;
+        obj.latlng = new kakao.maps.LatLng(attraction.latitude, attraction.longitude);
+
+        this.positions.push(obj);
+      });
+      this.loadMaker();
+    },
   },
   mounted() {
     // api 스크립트 소스 불러오기 및 지도 출력

@@ -2,7 +2,7 @@
   <div class="placeinfo-list">
     <div class="placeinfo-list-contents">
       <GalleryBoardListItem
-        v-for="attraction in attractions"
+        v-for="attraction in attractions.content"
         :key="attraction.contentId"
         :attraction="attraction"
       />
@@ -12,7 +12,10 @@
 
 <script>
 import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
-import http from "@/api/http";
+// import http from "@/api/http";
+import { mapState, mapActions } from "vuex";
+
+const attractionStore = "attractionStore";
 
 export default {
   name: "GalleryBoardList",
@@ -20,14 +23,17 @@ export default {
     GalleryBoardListItem,
   },
   data() {
-    return {
-      attractions: [],
-    };
+    return {};
+  },
+
+  computed: {
+    ...mapState(attractionStore, ["attractions"]),
   },
   created() {
-    http.get(`/attractions`).then(({ data }) => {
-      this.attractions = data.content;
-    });
+    this.getAllAttractionList();
+  },
+  methods: {
+    ...mapActions(attractionStore, ["getAllAttractionList"]),
   },
 };
 </script>
