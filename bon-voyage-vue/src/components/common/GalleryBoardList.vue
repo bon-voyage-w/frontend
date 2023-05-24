@@ -2,7 +2,7 @@
   <div class="placeinfo-list">
     <div class="placeinfo-list-contents">
       <GalleryBoardListItem
-        v-for="attraction in attractions"
+        v-for="attraction in boardAttractions"
         :key="attraction.contentId"
         :attraction="attraction"
       />
@@ -13,6 +13,9 @@
 <script>
 import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
 import http from "@/api/http";
+import { mapState, mapActions } from "vuex";
+
+const attractionStore = "attractionStore";
 
 export default {
   name: "GalleryBoardList",
@@ -21,13 +24,34 @@ export default {
   },
   data() {
     return {
-      attractions: [],
+      boardAttractions: [],
     };
+  },
+  computed: {
+    ...mapState(attractionStore, ["attractions"]),
   },
   created() {
     http.get(`/attractions`).then(({ data }) => {
-      this.attractions = data.content;
+      this.boardAttractions = data.content;
     });
+  },
+  methods: {
+    ...mapActions(attractionStore, ["detailAttraction"]),
+    // ...mapMutations(attractionStore, [
+    //   "CLEAR_SIDO_LIST",
+    //   "CLEAR_GUGUN_LIST",
+    //   "CLEAR_ATTRACTION_LIST",
+    // ]),
+
+    // relatedGugunList() {
+    //   this.CLEAR_GUGUN_LIST;
+    //   this.gugunCode = null;
+    //   console.log(">>>>>>>>>>>>>> ", this.sidoCode);
+    //   if (this.sidoCode) this.getRelatedGugun(this.sidoCode);
+    // },
+    // searchAttraction() {
+    //   if (this.gugunCode) this.getattractionList(this.gugunCode);
+    // },
   },
 };
 </script>

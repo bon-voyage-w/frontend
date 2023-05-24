@@ -58,7 +58,7 @@ export default {
       if (this.sidoCode) this.getRelatedGugun(this.sidoCode);
     },
     searchAttraction() {
-      if (this.gugunCode) this.getattractionList(this.gugunCode);
+      if (this.gugunCode) this.getAttractionList(this.sidoCode, this.gugunCode);
     },
   },
 };

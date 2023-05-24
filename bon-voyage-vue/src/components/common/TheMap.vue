@@ -18,6 +18,20 @@ export default {
       markers: [],
     };
   },
+  watch: {
+    attractions() {
+      console.log("관광지 >>>>>>>> ", this.chargers);
+      this.positions = [];
+      this.chargers.forEach((charger) => {
+        let obj = {};
+        obj.title = charger.statNm;
+        obj.latlng = new kakao.maps.LatLng(charger.lat, charger.lng);
+
+        this.positions.push(obj);
+      });
+      this.loadMaker();
+    },
+  },
   mounted() {
     // api 스크립트 소스 불러오기 및 지도 출력
     if (window.kakao && window.kakao.maps) {
@@ -28,6 +42,9 @@ export default {
   },
 
   methods: {
+    // 주변 탐색
+    searchNearPlaces() {},
+
     // api 불러오기
     loadScript() {
       const script = document.createElement("script");

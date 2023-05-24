@@ -70,9 +70,13 @@ const attractionStore = {
         }
       );
     },
-    getAttractionList: ({ commit }, gugunCode) => {
-      const params = { gugunCode: gugunCode };
-
+    getAttractionList: ({ commit }, { sidoCode, gugunCode }) => {
+      const params = { sidoCode: sidoCode, gugunCode: gugunCode };
+      console.log(
+        "시도 구군 코드를 파라미터로 받은 거 확인하기 >>>>> ",
+        sidoCode,
+        gugunCode
+      );
       attractionList(
         params,
         ({ data }) => {
