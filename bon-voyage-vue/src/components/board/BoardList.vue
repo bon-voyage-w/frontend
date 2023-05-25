@@ -36,21 +36,6 @@
           </tbody>
         </table>
       </div>
-
-      <ul class="notice-pagenation">
-        <li>이전</li>
-        <li class="active">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-        <li>다음</li>
-      </ul>
     </main>
   </div>
 </template>
@@ -164,9 +149,7 @@ export default {
   width: 1000px;
   margin: 50px auto;
 }
-/* header h1 {
-  text-align: center;
-} */
+
 header button {
   float: right;
   background: #eabb4d;
@@ -188,35 +171,5 @@ main table th {
 }
 main table th:not(:nth-child(2), :nth-child(3)) {
   text-align: center;
-}
-.notice-pagenation {
-  display: flex;
-  max-width: 600px;
-  margin: 40px auto;
-  /* box-shadow: inset 0 0 10px red; */
-}
-.notice-pagenation li {
-  width: calc(100% - 88px / 12);
-  padding: 4px 0;
-  text-align: center;
-  /* box-shadow: inset 0 0 4px blue; */
-  cursor: pointer;
-}
-.notice-pagenation li:not(:last-child) {
-  margin-right: 8px;
-}
-.notice-pagenation li.active {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #0d6efd;
-  font-weight: bold;
-}
-.notice-pagenation li:not(.active):hover {
-  background-color: rgba(150, 165, 212, 0.2);
-  border-radius: 4px;
-}
-.placeinfo-list-title {
-  text-align: center;
-  margin: 120px 0 80px 0;
 }
 </style>

@@ -3,15 +3,12 @@
     <ul class="nav-bar-menu">
       <li>
         <router-link :to="{ name: 'main' }">
-          <img
-            class="main-logo"
-            src="@/assets/img/logo_new.png"
-            alt="로고이미지"
-          />
+          <img class="main-logo" src="@/assets/img/logo_new.png" alt="로고이미지" />
         </router-link>
       </li>
       <li>
         <router-link :to="{ name: 'attraction' }">관광지</router-link>
+        <router-link :to="{ name: 'route' }">여행계획</router-link>
         <router-link :to="{ name: 'share-board' }">공유게시판</router-link>
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>

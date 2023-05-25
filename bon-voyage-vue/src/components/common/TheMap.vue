@@ -1,8 +1,6 @@
 <template>
   <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">
-      주변 관광지 보기
-    </button>
+    <button class="my-location" @click="currentLocation()">현재 위치</button>
     <div id="map"></div>
   </div>
 </template>
@@ -31,10 +29,7 @@ export default {
       this.attractions.content.forEach((attraction) => {
         let obj = {};
         obj.title = attraction.title;
-        obj.latlng = new kakao.maps.LatLng(
-          attraction.latitude,
-          attraction.longitude
-        );
+        obj.latlng = new kakao.maps.LatLng(attraction.latitude, attraction.longitude);
 
         this.positions.push(obj);
         console.log("@@@@@@@@@@@@@ maker에 넣는 obj " + obj);

@@ -1,18 +1,35 @@
 <template>
-  <div class="wrap-app-kakao-map">
-    <MapSideBar></MapSideBar>
-    <TheKakaoMap></TheKakaoMap>
+  <div>
+    <div class="placeinfo-list-title">
+      <h2>관광지 찾기</h2>
+      <p>내 주변 관광지를 찾아보세요</p>
+    </div>
+    <location-select-box-vue />
+    <search-box-vue />
+    <the-map-vue />
+    <place-info-nav-vue />
+    <gallery-board-list-vue />
+    <the-page-nation-vue />
   </div>
 </template>
 
 <script>
-import TheKakaoMap from "@/components/map/TheKakaoMap.vue";
-import MapSideBar from "@/components/map/MapSideBar.vue";
+import LocationSelectBoxVue from "@/components/common/LocationSelectBox.vue";
+import SearchBoxVue from "@/components/common/SearchBox.vue";
+import TheMapVue from "@/components/common/TheMap.vue";
+import PlaceInfoNavVue from "@/components/common/PlaceInfoNav.vue";
+import GalleryBoardListVue from "@/components/common/GalleryBoardList.vue";
+import ThePageNationVue from "@/components/common/ThePageNation.vue";
+
 export default {
   name: "AppAttraction",
   components: {
-    TheKakaoMap,
-    MapSideBar,
+    LocationSelectBoxVue,
+    SearchBoxVue,
+    TheMapVue,
+    PlaceInfoNavVue,
+    ThePageNationVue,
+    GalleryBoardListVue,
   },
 
   created() {},
@@ -21,8 +38,8 @@ export default {
 </script>
 
 <style scoped>
-.wrap-app-kakao-map {
-  width: 100vw;
-  height: 100vh;
+.placeinfo-list-title {
+  text-align: center;
+  margin: 120px 0 80px 0;
 }
 </style>
