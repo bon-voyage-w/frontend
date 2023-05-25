@@ -18,8 +18,15 @@ export default {
   name: "ReviewWriteBox",
   components: {},
   data() {
-    return {};
+    return {
+      review:"",
+    };
   },
+  methods : {
+    registerReview(){
+
+    }
+  }
 };
 </script>
 

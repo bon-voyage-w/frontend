@@ -65,7 +65,7 @@ export default {
     },
     clearGugunSelectList() {
       this.commitClearGugunList();
-      this.conditions.gugunCode = null;
+      this.conditions.gugunCode = 0;
     },
   },
 };

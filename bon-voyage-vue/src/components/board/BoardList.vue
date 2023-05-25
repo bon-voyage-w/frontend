@@ -27,9 +27,10 @@
           </thead>
           <tbody>
             <board-list-item
-              v-for="article in articles"
+              v-for="(article, index) in articles"
               :key="article.noticeId"
               :article="article"
+              :index="index"
             ></board-list-item>
           </tbody>
         </table>
@@ -63,7 +64,8 @@ export default {
     listArticle(
       param,
       ({ data }) => {
-        this.articles = data;
+        console.log(data);
+        this.articles = data.content;
       },
       (error) => {
         console.log(error);

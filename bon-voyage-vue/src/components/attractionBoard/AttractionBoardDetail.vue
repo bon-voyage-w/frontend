@@ -3,11 +3,18 @@
     <div class="wrap-attraction-detail">
       <img :src="attractionDetail.attractionInfoDto.firstImage" />
       <div class="wrap-attraction-detail-text">
-        <button id="like" class="btn-like">
+        <button v-if="!isLike" id="like" class="btn-like" @click.prevent="dolike">
           <font-awesome-icon
             :icon="['far', 'heart']"
             size="2xl"
             style="color: #696969"
+          />
+        </button>
+        <button v-if="isLike" id="like" class="btn-like" @click.prevent="unlike">
+          <font-awesome-icon
+              :icon="['far', 'heart']"
+              size="2xl"
+              style="color: deeppink"
           />
         </button>
         <h2>{{ attractionDetail.attractionInfoDto.title }}</h2>
@@ -24,21 +31,22 @@
 
 <script>
 import { AttractionDetailByContentId } from "@/api/attraction";
-
+import {like, dislike} from "@/api/user";
 export default {
   name: "AttractionBoardDetail",
   data() {
     return {
       attractionDetail: {},
+      isLike:false,
+      selectedId:"",
     };
   },
 
   created() {
-    let selectedContentId = this.$route.params.contentId;
 
-    console.log(selectedContentId);
+    this.selectedId = this.$route.params.contentId;
     AttractionDetailByContentId(
-      selectedContentId,
+      this.selectedId,
       ({ data }) => {
         this.attractionDetail = data;
         console.log(data);
@@ -48,7 +56,27 @@ export default {
       }
     );
   },
-  methods: {},
+  methods: {
+    dolike(){
+      like(this.selectedId,({ data }) => {
+        this.isLike=true;
+            console.log(data);
+          },
+          (error) => {
+            console.log(error);
+          });
+    },
+    unlike(){
+      dislike(this.selectedId,({ data }) => {
+            this.isLike=false;
+            console.log(data);
+          },
+          (error) => {
+            console.log(error);
+          });
+    }
+  },
+
 };
 </script>
 

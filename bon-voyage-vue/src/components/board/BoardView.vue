@@ -4,31 +4,26 @@
       <h2>공지사항</h2>
       <p>글쓰기</p>
     </div>
-    <b-form-input id="input-default" v-model="article.title" placeholder="제목을 입력하세요."></b-form-input>
+    <b-form-input id="input-default" v-model="article.title" disabled></b-form-input>
 
     <b-form-textarea
-      class="board-textarea"
-      id="textarea"
-      v-model="article.content"
-      placeholder="글을 입력하세요."
-      rows="20"
-      max-rows="6"
-      @submit.prevent="handleSubmit"
-      required
+        class="board-textarea"
+        id="textarea"
+        v-model="article.content"
+        disabled
     ></b-form-textarea>
-
-    <b-button class="board-write-btn" variant="outline-primary" @click.prevent="handleSubmit">등록</b-button>
   </div>
 </template>
 
 <script>
-import { writeArticle } from "@/api/notice";
+import {apiInstance} from "@/api/index"
 export default {
-
   name: "BoardWrite",
   data() {
     return {
       article: {
+        articleId: 0,
+        userid: "admin",
         title: "",
         content: "",
       },
@@ -37,16 +32,20 @@ export default {
   },
   methods: {
     handleSubmit() {
-      writeArticle(this.article,
-          ({ data }) => {
-            console.log(data);
-            this.$router.push("../");
-          },
-          (error) => {
-            console.log(error);
-          });
+      this.submitted = true;
     },
   },
+  created() {
+    this.selectedId = this.$route.params.noticeId;
+    apiInstance().get(`/notices/${this.selectedId}`).then(
+        ({ data }) => {
+          this.article = data;
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        });
+  }
 };
 </script>
 

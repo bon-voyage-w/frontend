@@ -47,6 +47,13 @@ async function myPageReview(success, fail) {
   api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
   await api.get(`/users/reviews`).then(success).catch(fail);
 }
+async function like(id,success,fail){
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.post(`/users/like/${id}`).then(success).catch(fail);
+}
+async function dislike(id,success,fail){
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.delete(`/users/like/${id}`).then(success).catch(fail);
+}
 
-
-export { login,findUserInfoById,logout,myPageLike,myPageReview,myPageRoute,register,updateUser };
+export { login,findUserInfoById,logout,myPageLike,myPageReview,myPageRoute,register,updateUser,like,dislike };

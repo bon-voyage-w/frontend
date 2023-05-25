@@ -12,14 +12,14 @@ import {
 const attractionStore = {
   namespaced: true,
   state: {
-    sidos: [{ value: null, text: " --------- 시 --------- " }],
-    guguns: [{ value: null, text: " --------- 도 --------- " }],
+    sidos: [{ value: 0, text: " --------- 시 --------- " }],
+    guguns: [{ value: 0, text: " --------- 도 --------- " }],
     attractions: [],
     attraction: null,
     selectedLocation: [],
     conditions: {
-      sidoCode: null,
-      gugunCode: null,
+      sidoCode: 0,
+      gugunCode: 0,
       keyword: null,
       contentTypeId: 0,
     },
@@ -34,10 +34,10 @@ const attractionStore = {
   mutations: {
     // empty
     CLEAR_SIDO_LIST(state) {
-      state.sidos = [{ value: null, text: " --------- 시 --------- " }];
+      state.sidos = [{ value: 0, text: " --------- 시 --------- " }];
     },
     CLEAR_GUGUN_LIST(state) {
-      state.guguns = [{ value: null, text: " --------- 도 --------- " }];
+      state.guguns = [{ value: 0, text: " --------- 도 --------- " }];
     },
     CLEAR_ATTRACTION_LIST(state) {
       state.attractions = [];
@@ -45,8 +45,8 @@ const attractionStore = {
     },
     CLEAR_CONDITIONS(state) {
       state.conditions = {
-        sidoCode: null,
-        gugunCode: null,
+        sidoCode: 0,
+        gugunCode: 0,
         keyword: null,
         contentTypeId: 0,
       };
@@ -148,6 +148,12 @@ const attractionStore = {
     },
     commitClearGugunList: ({ commit }) => {
       commit("CLEAR_GUGUN_LIST", "");
+    },
+    clearAllCondition: ({commit})=>{
+      commit("CLEAR_CONDITIONS","");
+    },
+    clearAttractionList: ({commit})=>{
+      commit("SET_ATTRACTION_LIST",null);
     },
     async getLikeAttraction ({commit}) {
       await myPageLike(

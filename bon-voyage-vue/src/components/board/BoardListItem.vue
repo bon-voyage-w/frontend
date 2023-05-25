@@ -1,12 +1,12 @@
 <template>
   <tr>
-    <td>{{ article.articleNo }}</td>
+    <td>{{ index }}</td>
     <td>
-      <router-link :to="{ name: 'boardview', params: { articleno: article.articleNo } }">
+      <router-link :to="{ name: 'boardView', params: { noticeId: article.noticeId } }">
         {{ article.title }}
       </router-link>
     </td>
-    <td>{{ article.userId }}</td>
+    <td>관리자</td>
     <td>{{ article.date }}</td>
     <td>{{ article.hit }}</td>
   </tr>
@@ -17,6 +17,7 @@ export default {
   name: "BoardListItem",
   props: {
     article: Object,
+    num: Number,
   },
 };
 </script>

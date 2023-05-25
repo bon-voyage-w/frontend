@@ -1,7 +1,7 @@
 <template>
   <div class="wrap-app-kakao-map">
-    <MapSideBar></MapSideBar>
-    <TheKakaoMap></TheKakaoMap>
+    <map-side-bar></map-side-bar>
+    <the-kakao-map></the-kakao-map>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
     TheKakaoMap,
     MapSideBar,
   },
-
   created() {},
   methods: {},
 };
@@ -25,4 +24,5 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+
 </style>

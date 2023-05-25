@@ -4,7 +4,8 @@ import createPersistedState from "vuex-persistedstate";
 import attractionStore from "@/store/modules/attractionStore";
 
 import userStore from '@/store/modules/userStore';
-import reviewStore from "@/store/modules/reviewStore"
+import reviewStore from "@/store/modules/reviewStore";
+import routeStore from "@/store/modules/routeStore"
 
 Vue.use(Vuex)
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     userStore,
     attractionStore,
     reviewStore,
+    routeStore,
   },
   plugins: [
     createPersistedState({

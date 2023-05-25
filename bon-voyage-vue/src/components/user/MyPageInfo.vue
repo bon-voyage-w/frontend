@@ -21,37 +21,13 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    lorem
+                                    2023-05-01
                                 </td>
                                 <td>
-                                    lorem
+                                    서울 여행
                                 </td>
                                 <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="" title="View">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="" title="Edit">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="" title="Delete">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    lorem
+                                    3일
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -69,37 +45,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    lorem
+                                  2023-05-01
                                 </td>
                                 <td>
-                                    lorem
+                                    인천 여행
                                 </td>
                                 <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="" title="View">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="" title="Edit">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="" title="Delete">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    lorem
-                                </td>
-                                <td>
-                                    lorem
+                                    4일
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -117,13 +69,61 @@
                             </tr>
                             <tr>
                                 <td>
-                                    lorem
+                                  2023-05-01
                                 </td>
                                 <td>
-                                    lorem
+                                    부산 여행
                                 </td>
                                 <td>
-                                    lorem
+                                    2일
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="" title="View">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a href="" title="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="" title="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                  2023-05-01
+                                </td>
+                                <td>
+                                    강릉 여행
+                                </td>
+                                <td>
+                                    3일
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="" title="View">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a href="" title="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="" title="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                  2023-05-01
+                                </td>
+                                <td>
+                                    속초 여행
+                                </td>
+                                <td>
+                                    3일
                                 </td>
                                 <td>
                                     <div class="btn-group">

@@ -14,6 +14,7 @@ import AppLogin from "@/views/AppLogin";
 import KakaoAuth from "@/components/auth/KakaoAuth"
 import AppSignUp from "@/views/AppSignUp.vue";
 import AppMyPage from "@/views/AppMyPage.vue";
+import BoardView from "@/components/board/BoardView";
 
 
 
@@ -72,6 +73,11 @@ const routes = [
         path: "modify",
         name: "noticemodify",
         component: BoardModify,
+      },
+      {
+        path: "/:noticeId",
+        name: "boardView",
+        component: BoardView,
       },
     ],
   },
