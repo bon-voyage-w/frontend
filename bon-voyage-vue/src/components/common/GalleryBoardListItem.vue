@@ -1,6 +1,9 @@
 <template>
   <button class="placeinfo-list-item">
-    <router-link :to="{ name: 'attractiondetail', params: { contentId: attraction.contentId } }">
+    <router-link
+      @click="selectAttraction"
+      :to="{ name: 'attractiondetail', params: { contentId: attraction.contentId } }"
+    >
       <img :src="attraction.firstImage" alt="" @error="replaceNoImg" />
       <div class="placeinfo-list-item-text">
         <h3>{{ attraction.title }}</h3>
@@ -11,18 +14,20 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
-// const attractionStore = "attractionStore";
+import { mapActions } from "vuex";
+const attractionStore = "attractionStore";
 export default {
   name: "GalleryBoardListItem",
+
   props: {
     attraction: Object,
   },
   methods: {
-    // ...mapActions(attractionStore, ["detailAttraction"]),
-    // selectAttraction() {
-    //   this.detailAttraction(this.attraction.contentId);
-    // },
+    ...mapActions(attractionStore, ["detailAttraction"]),
+    selectAttraction() {
+      console.log(">>>>>>>>>>>>>>>>>>>> 111111111111111 클릭이벤트 ");
+      this.detailAttraction(this.attraction.contentId);
+    },
     replaceNoImg(e) {
       e.target.src = "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
     },
