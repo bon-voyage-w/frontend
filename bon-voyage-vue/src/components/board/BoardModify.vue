@@ -1,6 +1,9 @@
 <template>
   <div class="board-write">
-    <h2>글 작성하기</h2>
+    <div class="placeinfo-list-title">
+      <h2>공지사항</h2>
+      <p>글수정</p>
+    </div>
     <b-form-input id="input-default" placeholder="제목을 입력하세요."></b-form-input>
 
     <b-form-textarea
@@ -14,7 +17,6 @@
 
     <button class="board-modify-btn" variant="outline-primary" @click="checkValue">수정</button>
     <button class="board-list-btn" variant="outline-primary" @click="moveList">목록</button>
-    <pre>{{ text.length }}/1000</pre>
   </div>
 </template>
 

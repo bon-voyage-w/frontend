@@ -1,11 +1,7 @@
 <template>
   <div class="wrap-search-box">
     <form>
-      <input
-        v-model="inputKeyword"
-        type="text"
-        placeholder="검색어를 입력해주세요."
-      />
+      <input v-model="inputKeyword" type="text" placeholder="검색어를 입력해주세요." />
     </form>
     <button class="box-search-btn" @click="searchKeyword">
       <font-awesome-icon icon="fa-magnifying-glass" style="color: #7d7d7d" />
@@ -30,16 +26,13 @@ export default {
     ...mapState(attractionStore, ["conditions"]),
   },
   methods: {
-    ...mapActions(attractionStore, [
-      "getAllAttractionList",
-      "getConditionsKeyword",
-    ]),
+    ...mapActions(attractionStore, ["getAttractionList", "getConditionsKeyword"]),
 
     searchKeyword() {
       if (this.inputKeyword != null) {
         this.getConditionsKeyword(this.inputKeyword);
       }
-      this.getAllAttractionList();
+      this.getAttractionList(this.conditions);
     },
   },
 };

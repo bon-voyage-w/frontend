@@ -3,6 +3,7 @@ import {
   relatedGugunList,
   attractionList,
   allAttractionList,
+  selectedAttraction,
 } from "@/api/attraction.js";
 
 const attractionStore = {
@@ -42,12 +43,12 @@ const attractionStore = {
       };
     },
     // change conditions
-    GET_CONDITIONS_KEYWORD(state, inputKeyword) {
+    SET_CONDITIONS_KEYWORD(state, inputKeyword) {
       state.conditions.keyword = inputKeyword;
-      console.log(
-        " @@@@@@@@@@@@@@@@@@ GET_CONDITIONS_KEYWORD(state, data) ::: ",
-        inputKeyword
-      );
+    },
+    SET_CONDITIONS_CONTENT_TYPE_ID(state, selectedContentType) {
+      console.log("mutation 호출!");
+      state.conditions.contentTypeId = selectedContentType;
     },
     // get
     GET_ALL_SIDO_LIST(state, data) {
@@ -71,7 +72,10 @@ const attractionStore = {
   actions: {
     // change
     getConditionsKeyword: ({ commit }, inputKeyword) => {
-      commit("GET_CONDITIONS_KEYWORD", inputKeyword);
+      commit("SET_CONDITIONS_KEYWORD", inputKeyword);
+    },
+    getContentTypeId: ({ commit }, selectedContentType) => {
+      commit("SET_CONDITIONS_CONTENT_TYPE_ID", selectedContentType);
     },
     // get
     getAllSidoList: ({ commit }) => {
@@ -116,8 +120,19 @@ const attractionStore = {
         }
       );
     },
-    detailAttraction: ({ commit }, attraction) => {
-      commit("SET_DETAIL_ATTRACTION", attraction);
+    detailAttraction: ({ commit }, contentId) => {
+      selectedAttraction(
+        contentId,
+        ({ data }) => {
+          commit("SET_DETAIL_ATTRACTION", data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    commitClearGugunList: ({ commit }) => {
+      commit("CLEAR_GUGUN_LIST", "");
     },
   },
 };

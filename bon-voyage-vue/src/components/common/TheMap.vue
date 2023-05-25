@@ -66,12 +66,17 @@ export default {
     loadMap() {
       const container = document.getElementById("map");
       const options = {
-        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3,
+        center: new window.kakao.maps.LatLng(37.501711315447245, 127.04479582018247),
+        level: 6,
       };
 
       this.map = new window.kakao.maps.Map(container, options);
-      // this.loadMaker();
+
+      // 마커를 생성합니다
+      // var marker = new kakao.maps.Marker({
+      //   position: options.center,
+      // });
+      // marker.setMap(this.map);
     },
     // 지정한 위치에 마커 불러오기
     loadMaker() {

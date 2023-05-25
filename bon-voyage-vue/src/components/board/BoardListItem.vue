@@ -3,11 +3,11 @@
     <td>{{ article.articleNo }}</td>
     <td>
       <router-link :to="{ name: 'boardview', params: { articleno: article.articleNo } }">
-        {{ article.subject }}
+        {{ article.title }}
       </router-link>
     </td>
-    <td>{{ article.userName }}</td>
-    <td>{{ article.registerTime }}</td>
+    <td>{{ article.userId }}</td>
+    <td>{{ article.date }}</td>
     <td>{{ article.hit }}</td>
   </tr>
 </template>

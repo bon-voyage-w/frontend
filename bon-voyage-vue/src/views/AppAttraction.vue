@@ -20,7 +20,6 @@ import TheMapVue from "@/components/common/TheMap.vue";
 import PlaceInfoNavVue from "@/components/common/PlaceInfoNav.vue";
 import GalleryBoardListVue from "@/components/common/GalleryBoardList.vue";
 import ThePageNationVue from "@/components/common/ThePageNation.vue";
-
 export default {
   name: "AppAttraction",
   components: {

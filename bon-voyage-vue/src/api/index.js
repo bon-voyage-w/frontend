@@ -19,5 +19,13 @@ function attractionInstance() {
   });
   return instance;
 }
-
-export { apiInstance, attractionInstance };
+function noticeInstance() {
+  const instance = axios.create({
+    baseURL: "http://localhost:8085/notices",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  return instance;
+}
+export { apiInstance, attractionInstance, noticeInstance };

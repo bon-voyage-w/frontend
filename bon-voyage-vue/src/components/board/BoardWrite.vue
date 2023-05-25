@@ -9,14 +9,15 @@
     <b-form-textarea
       class="board-textarea"
       id="textarea"
-      v-model="text"
+      v-model="article.content"
       placeholder="글을 입력하세요."
       rows="20"
       max-rows="6"
+      @submit.prevent="handleSubmit"
+      required
     ></b-form-textarea>
 
-    <b-button class="board-write-btn" href="#" variant="outline-primary">등록</b-button>
-    <!-- <pre>{{ text.length }}/1000</pre> -->
+    <b-button class="board-write-btn" variant="outline-primary">등록</b-button>
   </div>
 </template>
 
@@ -25,8 +26,19 @@ export default {
   name: "BoardWrite",
   data() {
     return {
-      text: "",
+      article: {
+        articleno: 0,
+        userid: "admin",
+        subject: "",
+        content: "",
+      },
+      isUserid: false,
     };
+  },
+  methods: {
+    handleSubmit() {
+      this.submitted = true;
+    },
   },
 };
 </script>

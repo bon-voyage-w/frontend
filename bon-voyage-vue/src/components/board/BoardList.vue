@@ -4,10 +4,8 @@
       <h2>공지사항</h2>
       <p>문의글은 1:1 문의 게시판에 남겨주세요</p>
     </div>
-    <!-- <header> -->
-    <!-- <h1>공지사항</h1> -->
-    <button type="button" @click="movePage">글쓰기</button>
-    <!-- </header> -->
+
+    <button type="button" class="btn-notice-write" @click="movePage">글쓰기</button>
     <main>
       <div v-if="articles.length">
         <table>
@@ -30,23 +28,27 @@
           <tbody>
             <board-list-item
               v-for="article in articles"
-              :key="article.articleNo"
+              :key="article.noticeId"
               :article="article"
             ></board-list-item>
           </tbody>
         </table>
       </div>
     </main>
+    <the-page-nation-vue />
   </div>
 </template>
 
 <script>
 import BoardListItem from "@/components/board/BoardListItem";
+import { listArticle } from "@/api/notice";
+import ThePageNationVue from "../common/ThePageNation.vue";
 
 export default {
   name: "BoardList",
   components: {
     BoardListItem,
+    ThePageNationVue,
   },
   data() {
     return {
@@ -54,91 +56,29 @@ export default {
     };
   },
   created() {
-    // 비동기
-    // TODO : 글목록 얻기.
-    this.articles = [
-      {
-        articleNo: 10,
-        userName: "안효인",
-        subject: "안녕하세요",
-        hit: 10,
-        registerTime: "2022-11-08",
+    let param = {
+      pageNumber: 0,
+      pageSize: 15,
+    };
+    listArticle(
+      param,
+      ({ data }) => {
+        this.articles = data;
       },
-      {
-        articleNo: 9,
-        userName: "김싸피",
-        subject: "안녕하세요2",
-        hit: 102,
-        registerTime: "2022-11-08",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-      {
-        articleNo: 8,
-        userName: "박싸피",
-        subject: "안녕하세요7",
-        hit: 24,
-        registerTime: "2022-11-07",
-      },
-    ];
+      (error) => {
+        console.log(error);
+      }
+    );
   },
   methods: {
     movePage() {
       this.$router.push({ name: "noticewrite" });
+    },
+    viewArticle(article) {
+      this.$router.push({
+        name: "noticeview",
+        params: { articleno: article.articleno },
+      });
     },
   },
 };
@@ -150,7 +90,7 @@ export default {
   margin: 50px auto;
 }
 
-header button {
+.btn-notice-write {
   float: right;
   background: #eabb4d;
   color: #fff;

@@ -8,6 +8,7 @@ import AppRoute from "@/views/AppRoute";
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
+import AttractionBoardDetail from "@/components/attractionBoard/AttractionBoardDetail";
 
 Vue.use(VueRouter);
 
@@ -23,10 +24,16 @@ const routes = [
     component: AppAttraction,
     // children: [
     //   {
-    //     path: "/:contentId",
-    //     component:AppAttractionDetail
-    //   }
-    // ]
+    //     path: "/attractions/:contentId",
+    //     name: "attractiondetail",
+    //     component: AttractionBoardDetail,
+    //   },
+    // ],
+  },
+  {
+    path: "/attractions/:contentId",
+    name: "attractiondetail",
+    component: AttractionBoardDetail,
   },
   {
     path: "/routes",

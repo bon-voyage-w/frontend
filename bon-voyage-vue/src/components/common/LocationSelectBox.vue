@@ -12,11 +12,6 @@
       :options="guguns"
       @change="searchAttraction"
     ></b-form-select>
-    <!-- <b-form-select v-model="conditions.gugunCode" @change="searchAttraction">
-      <option v-for="(gugun, index) in guguns" :key="index" :value="gugun">
-        {{ gugun }}
-      </option>
-    </b-form-select> -->
   </div>
 </template>
 
@@ -40,11 +35,6 @@ export default {
       "conditions",
     ]),
   },
-  // watch: {
-  //   guguns() {
-  //     return this.guguns;
-  //   },
-  // },
   created() {
     // empty
     this.CLEAR_SIDO_LIST();
@@ -52,13 +42,13 @@ export default {
     this.CLEAR_CONDITIONS();
     // state에 시도 저장
     this.getAllSidoList();
-    // this.conditions = [];
   },
   methods: {
     ...mapActions(attractionStore, [
       "getAllSidoList",
       "getRelatedGugun",
       "getAttractionList",
+      "commitClearGugunList",
     ]),
     ...mapMutations(attractionStore, [
       "CLEAR_SIDO_LIST",
@@ -67,18 +57,13 @@ export default {
       "CLEAR_CONDITIONS",
     ]),
     relatedGugunList() {
-      this.CLEAR_GUGUN_LIST;
-      this.conditions.gugunCode = null;
-      // this.gugunCode = null;
-      if (this.conditions.sidoCode)
-        this.getRelatedGugun(this.conditions.sidoCode);
+      if (this.conditions.sidoCode) this.getRelatedGugun(this.conditions.sidoCode);
     },
     searchAttraction() {
       if (this.conditions.gugunCode) this.getAttractionList(this.conditions);
     },
     clearGugunSelectList() {
-      console.log("제발 구군리스트 리셋돼라.....제발.....");
-      this.CLEAR_GUGUN_LIST;
+      this.commitClearGugunList();
       this.conditions.gugunCode = null;
     },
   },

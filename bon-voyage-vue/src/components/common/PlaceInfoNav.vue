@@ -80,7 +80,7 @@ export default {
   color: white;
   font-weight: bold;
 }
-.placeinfo-nav input[type="radio"] + {
+.placeinfo-nav input[type="radio"] {
   display: none;
 }
 .placeinfo-nav input[type="radio"]:checked + label {
