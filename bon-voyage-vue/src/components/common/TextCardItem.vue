@@ -1,17 +1,31 @@
 <template>
     <div class="card">
         <h3>{{ attraction.title }}</h3>
-        <div class="num">{{ review.reviewContent }}</div>
+        <span class="num">{{ review.reviewContent }}</span> <span class="writeDate">{{review.writeDate.substr(0,10) }}</span>
     </div>
 </template>
 <script>
-// import api.
-// import { apiInstance } from "./index.js";
-// import http from "@/api/http-common.js"
+import {AttractionDetailByContentId} from "@/api/attraction"
+
 
 export default {
+    data() {
+        return {
+            attraction: {},
+        }
+    },
+    props : {
+        review: Object,
+    },
     created(){
-    //     apiInstance().get("").
+        AttractionDetailByContentId(
+            this.review.contentId
+            ,({data}) => {
+                this.attraction=data.attractionInfoDto;
+            },
+            () => {
+            }
+    )
     }
 }
 </script>
@@ -48,5 +62,10 @@ export default {
 .card h3 {
     font-size: 15px;
     font-weight: bold;
+}
+
+.writeDate {
+    position: absolute;
+    right: 10px;
 }
 </style>

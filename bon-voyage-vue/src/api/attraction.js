@@ -19,4 +19,8 @@ function allAttractionList(success, fail) {
   // [수정필요] 페이지 관련 파라미터 임시로 넘기기
   attraction.get(`?pageNumber=0&pageSize=6`).then(success).catch(fail);
 }
-export { allSidoList, relatedGugunList, attractionList, allAttractionList };
+
+function AttractionDetailByContentId(contentId,success,fail){
+  attraction.get(`/${contentId}`).then(success).catch(fail);
+}
+export { allSidoList, relatedGugunList, attractionList, allAttractionList,AttractionDetailByContentId };

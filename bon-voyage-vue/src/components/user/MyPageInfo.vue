@@ -152,6 +152,7 @@
 <script>
 import { mapActions } from "vuex";
 const attractionStore = "attractionStore";
+const reviewStore = "reviewStore";
 import LikeCard from "@/components/user/LikeCard"
 import ReviewCard from "@/components/user/ReviewCard"
 
@@ -167,10 +168,11 @@ export default {
     },
     created() {
         this.getLikeAttraction();
-
+        this.getMyReviewList();
     },
     methods : {
         ...mapActions(attractionStore,["getLikeAttraction"]),
+        ...mapActions(reviewStore,["getMyReviewList"]),
     }
 }
 </script>

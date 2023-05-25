@@ -9,7 +9,9 @@ const reviewStore={
         review :null,
     },
     getters :{
-
+        getReviewList: function (state){
+            return state.reviews;
+        }
     },
     mutations: {
         SET_REVIEW_LIST: (state, reviews) => {
@@ -20,7 +22,7 @@ const reviewStore={
         },
     },
     actions :{
-        getReviewList ({ commit })  {
+        getMyReviewList ({ commit })  {
             myPageReview(
                 ({ data }) => {
                     commit("SET_REVIEW_LIST", data);
