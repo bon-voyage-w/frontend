@@ -2,8 +2,12 @@ import { noticeInstance } from "@/api/index.js";
 
 const notice = noticeInstance();
 
-function listArticle(param, success, fail) {
-  notice.get({ params: param }).then(success).catch(fail);
+function listArticle(params, success, fail) {
+  // [수정필요] 페이지 관련 파라미터 임시로 넘기기
+  notice
+    .get(`?pageNumber=0&pageSize=6`, { params: params })
+    .then(success)
+    .catch(fail);
 }
 
 function writeArticle(article, success, fail) {

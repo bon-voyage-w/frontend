@@ -28,7 +28,6 @@ export default {
   methods: {
     ...mapActions(attractionStore, ["detailAttraction"]),
     selectAttraction() {
-      console.log(">>>>>>>>>>>>>>>>>>>> 111111111111111 클릭이벤트 ");
       this.detailAttraction(this.attraction.contentId);
     },
     replaceNoImg(e) {

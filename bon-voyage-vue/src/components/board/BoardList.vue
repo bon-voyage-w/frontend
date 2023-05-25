@@ -5,7 +5,9 @@
       <p>문의글은 1:1 문의 게시판에 남겨주세요</p>
     </div>
 
-    <button type="button" class="btn-notice-write" @click="movePage">글쓰기</button>
+    <button type="button" class="btn-notice-write" @click="movePage">
+      글쓰기
+    </button>
     <main>
       <div v-if="articles.length">
         <table>
@@ -42,7 +44,7 @@
 <script>
 import BoardListItem from "@/components/board/BoardListItem";
 import { listArticle } from "@/api/notice";
-import ThePageNationVue from "../common/ThePageNation.vue";
+import ThePageNationVue from "@/components/common/ThePageNation.vue";
 
 export default {
   name: "BoardList",
@@ -52,13 +54,13 @@ export default {
   },
   data() {
     return {
-      articles: [],
+      articles: {},
     };
   },
   created() {
     let param = {
-      pageNumber: 0,
-      pageSize: 15,
+      // pageNumber: 0,
+      // pageSize: 15,
     };
     listArticle(
       param,

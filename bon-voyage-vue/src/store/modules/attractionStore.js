@@ -66,8 +66,6 @@ const attractionStore = {
       state.attractions = attractions;
     },
     SET_DETAIL_ATTRACTION(state, attraction) {
-      console.log(">>>>>>>>>>>>>>>>>>>> 333333333333 mutation ");
-
       state.attraction = attraction;
     },
   },
@@ -132,7 +130,6 @@ const attractionStore = {
           console.log(error);
         }
       );
-      console.log(">>>>>>>>>>>>>>>>>>>> 2222222222222222 액션 ");
     },
     commitClearGugunList: ({ commit }) => {
       commit("CLEAR_GUGUN_LIST", "");

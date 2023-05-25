@@ -36,7 +36,6 @@ export default {
   created() {
     let selectedContentId = this.$route.params.contentId;
 
-    console.log(selectedContentId);
     AttractionDetailByContentId(
       selectedContentId,
       ({ data }) => {

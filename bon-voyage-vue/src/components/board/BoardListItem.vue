@@ -1,8 +1,10 @@
 <template>
   <tr>
-    <td>{{ article.articleNo }}</td>
+    <td>{{ article.noticeId }}</td>
     <td>
-      <router-link :to="{ name: 'boardview', params: { articleno: article.articleNo } }">
+      <router-link
+        :to="{ name: 'boardview', params: { articleno: article.articleNo } }"
+      >
         {{ article.title }}
       </router-link>
     </td>

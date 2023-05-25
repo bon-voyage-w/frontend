@@ -22,13 +22,6 @@ const routes = [
     path: "/attractions",
     name: "attraction",
     component: AppAttraction,
-    // children: [
-    //   {
-    //     path: "/attractions/:contentId",
-    //     name: "attractiondetail",
-    //     component: AttractionBoardDetail,
-    //   },
-    // ],
   },
   {
     path: "/attractions/:contentId",
