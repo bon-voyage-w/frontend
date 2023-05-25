@@ -5,7 +5,7 @@
 <script>
 import axios from "axios";
 import { mapActions } from "vuex";
-const memberStore = "memberStore";
+const userStore = "userStore";
 
 export default {
   name: "KakaoAuth",
@@ -26,7 +26,7 @@ export default {
     });
   },
   methods: {
-    ...mapActions(memberStore, ["userConfirmKakao", "getUserInfo"]),
+    ...mapActions(userStore, ["userConfirmKakao", "getUserInfo"]),
   },
 };
 </script>

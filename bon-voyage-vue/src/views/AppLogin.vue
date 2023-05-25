@@ -41,7 +41,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-const memberStore = "memberStore";
+const userStore = "userStore";
 
 export default {
   name: "AppLogin",
@@ -54,10 +54,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
+    ...mapState(userStore, ["isLogin", "isLoginError", "userInfo"]),
   },
   methods: {
-    ...mapActions(memberStore, ["userConfirm", "getUserInfo", "userConfirmKakao"]),
+    ...mapActions(userStore, ["userConfirm", "getUserInfo", "userConfirmKakao"]),
     async doLogin() {
       if (this.user.id == "") {
         alert("아이디를 입력하세요.");

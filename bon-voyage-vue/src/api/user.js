@@ -27,6 +27,18 @@ async function logout(success, fail) {
   api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
   await api.delete(`/users`).then(success).catch(fail);
 }
+async function myPageLike(success, fail) {
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.get(`/users/like`).then(success).catch(fail);
+}
+async function myPageRoute(success, fail) {
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.get(`/users/routes`).then(success).catch(fail);
+}
+async function myPageReview(success, fail) {
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.get(`/users/reviews`).then(success).catch(fail);
+}
 
 
-export { login,findUserInfoById,logout };
+export { login,findUserInfoById,logout,myPageLike,myPageReview,myPageRoute };

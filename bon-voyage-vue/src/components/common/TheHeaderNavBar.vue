@@ -13,7 +13,7 @@
       </li>
 
       <li v-if="userInfo">
-        <router-link :to="{ name: 'login' }">마이페이지</router-link>
+        <router-link :to="{ name: 'mypage' }">마이페이지</router-link>
         <router-link :to="{ name: 'main' }"><button @click.prevent="onClickLogout">로그아웃</button></router-link>
       </li>
       <li v-else>
@@ -26,7 +26,7 @@
 
 <script>
 import { mapState,mapGetters,mapActions} from "vuex";
-const memberStore = "memberStore";
+const userStore = "userStore";
 
 export default {
   name: "TheHeaderNavBar",
@@ -35,14 +35,13 @@ export default {
     return {};
   },
   created() {
-    this.getUserInfo();
    },
   computed: {
-    ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
+    ...mapState(userStore, ["isLogin", "isLoginError", "userInfo"]),
     ...mapGetters(["checkUserInfo"]),
   },
   methods: {
-    ...mapActions(memberStore, ["userLogout","getUserInfo"]),
+    ...mapActions(userStore, ["userLogout","getUserInfo"]),
     onClickLogout() {
       // this.SET_IS_LOGIN(false);
       // this.SET_USER_INFO(null);

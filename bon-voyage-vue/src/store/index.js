@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import attractionStore from "@/store/modules/attractionStore";
 
-import memberStore from '@/store/memberStore';
+import userStore from '@/store/modules/userStore';
 
 Vue.use(Vuex)
 
@@ -17,7 +17,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    memberStore,
+    userStore,
     attractionStore,
   },
   plugins: [

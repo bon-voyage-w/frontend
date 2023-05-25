@@ -1,8 +1,8 @@
 
 //import router from "@/router";
-import { login,findUserInfoById,logout } from "@/api/member";
+import { login,findUserInfoById,logout } from "@/api/user";
 
-const memberStore = {
+const userStore = {
   namespaced: true,
   state: {
     isLogin: false,
@@ -107,4 +107,4 @@ const memberStore = {
   },
 };
 
-export default memberStore;
+export default userStore;
