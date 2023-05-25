@@ -1,32 +1,58 @@
 <template>
-  <ul class="placeinfo-nav">
+  <div class="placeinfo-nav" @change="searchContentTypeId">
     <li>
-      <button>전체</button>
+      <input type="radio" value="0" id="0" v-model="selectedContentType" checked />
+      <label for="0">전체</label>
     </li>
     <li>
-      <button>관광지</button>
+      <input type="radio" value="12" id="12" v-model="selectedContentType" />
+      <label for="12">관광지</label>
     </li>
     <li>
-      <button>숙박</button>
+      <input type="radio" value="32" id="32" v-model="selectedContentType" />
+      <label for="32">숙박</label>
     </li>
     <li>
-      <button>음식점</button>
+      <input type="radio" value="39" id="39" v-model="selectedContentType" />
+      <label for="39">음식점</label>
     </li>
     <li>
-      <button>여가</button>
+      <input type="radio" value="14" id="14" v-model="selectedContentType" />
+      <label for="14">여가</label>
     </li>
-  </ul>
+  </div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
+const attractionStore = "attractionStore";
+
 export default {
   name: "PlaceInfoNav",
   components: {},
   data() {
-    return {};
+    return {
+      selectedContentType: null,
+    };
   },
   created() {},
-  methods: {},
+  computed: {
+    ...mapState(attractionStore, ["conditions"]),
+  },
+  methods: {
+    ...mapActions(attractionStore, [
+      "getAttractionList",
+      "getConditionsKeyword",
+      "getContentTypeId",
+    ]),
+    searchContentTypeId() {
+      console.log("메소드 호출");
+      this.getContentTypeId(this.selectedContentType);
+      this.getAttractionList(this.conditions);
+      alert("무사귀환");
+    },
+  },
 };
 </script>
 
@@ -51,7 +77,15 @@ export default {
 }
 .placeinfo-nav li:hover {
   background-color: #eabb4d;
-  color: red;
+  color: white;
+  font-weight: bold;
+}
+.placeinfo-nav input[type="radio"] + {
+  display: none;
+}
+.placeinfo-nav input[type="radio"]:checked + label {
+  background-color: #eabb4d;
+  color: white;
   font-weight: bold;
 }
 </style>
