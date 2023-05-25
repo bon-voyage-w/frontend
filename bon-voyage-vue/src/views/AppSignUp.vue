@@ -127,7 +127,6 @@ export default {
                     alert("회원가입 실패");
                 }
             );
-
         }
     },
     watch: {

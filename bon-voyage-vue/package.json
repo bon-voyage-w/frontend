@@ -13,10 +13,13 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^2.0.10",
+    "@mdi/font": "^7.2.96",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
+    "pretty-checkbox": "^3.0.3",
+    "pretty-checkbox-vue": "^1.1.9",
     "vue": "^2.7.14",
     "vue-awesome-sidebar": "^1.2.3",
     "vue-router": "^3.5.1",
@@ -33,7 +36,10 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "vue-template-compiler": "^2.6.14"
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.0",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.84.0"
   },
   "eslintConfig": {
     "root": true,
