@@ -29,4 +29,13 @@ function noticeInstance() {
   });
   return instance;
 }
-export { apiInstance, attractionInstance, noticeInstance };
+function reviewInstance() {
+  const instance = axios.create({
+    baseURL: "http://localhost:8085/reviews",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  return instance;
+}
+export { apiInstance, attractionInstance, noticeInstance, reviewInstance };

@@ -3,7 +3,7 @@
     <form>
       <input v-model="review" type="text" placeholder="리뷰를 써주세요" />
     </form>
-    <button class="box-search-btn" @click="searchKeyword">
+    <button class="box-search-btn" @click="registerReview">
       <font-awesome-icon
         :icon="['fas', 'paper-plane']"
         style="color: #eabb4d"
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import {} from "@/api/";
 export default {
   name: "ReviewWriteBox",
   components: {},

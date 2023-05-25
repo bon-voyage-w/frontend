@@ -3,7 +3,11 @@
     <ul class="nav-bar-menu">
       <li>
         <router-link :to="{ name: 'main' }">
-          <img class="main-logo" src="@/assets/img/logo_new.png" alt="로고이미지" />
+          <img
+            class="main-logo"
+            src="@/assets/img/logo_new.png"
+            alt="로고이미지"
+          />
         </router-link>
       </li>
       <li>
@@ -13,9 +17,14 @@
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
       <li v-if="userInfo">
-        <a><span style="color: #eabb4d;">{{userInfo.name}}</span>님 반가워요 :)</a>
+        <a
+          ><span style="color: #eabb4d">{{ userInfo.name }}</span
+          >님 반가워요 :)</a
+        >
         <router-link :to="{ name: 'mypage' }">마이페이지</router-link>
-        <router-link :to="{ name: 'main' }"><button @click.prevent="onClickLogout">로그아웃</button></router-link>
+        <router-link :to="{ name: 'main' }"
+          ><button @click.prevent="onClickLogout">로그아웃</button></router-link
+        >
       </li>
       <li v-else>
         <router-link :to="{ name: 'login' }">로그인</router-link>
@@ -26,7 +35,7 @@
 </template>
 
 <script>
-import { mapState,mapGetters,mapActions} from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 const userStore = "userStore";
 
 export default {
@@ -35,14 +44,13 @@ export default {
   data() {
     return {};
   },
-  created() {
-   },
+  created() {},
   computed: {
     ...mapState(userStore, ["isLogin", "isLoginError", "userInfo"]),
     ...mapGetters(["checkUserInfo"]),
   },
   methods: {
-    ...mapActions(userStore, ["userLogout","getUserInfo"]),
+    ...mapActions(userStore, ["userLogout", "getUserInfo"]),
     onClickLogout() {
       // this.SET_IS_LOGIN(false);
       // this.SET_USER_INFO(null);
