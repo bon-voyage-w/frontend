@@ -7,7 +7,7 @@
         </div>
         <div class="likeGroup">
             <!--    <h4>좋아요 한 여행지</h4>-->
-            <div style="display: flex; flex: 0 1 100%">
+            <div style="display: flex; flex: 0 1 100%; flex-flow: wrap row">
                 <circle-img-card-item
                         v-for="attraction in getLimitUserLikeAttractions"
                         :key="attraction.contentId"
@@ -44,15 +44,16 @@ export default {
 </script>
 <style>
 .likeGroup {
-    width: 100%;
+    width: 20em;
     background: #ffffff;
     padding: 1em;
     border-radius: 6px;
     border: 1px solid #dee2e6;
     box-shadow: 0 3px 10px rgba(62, 85, 120, .045);
-    margin: 10px 8px 15px -45px;
+    margin: 10px 100px 15px -45px;
     flex: 0 1 100%;
     z-index: -1;
+  flex-flow: wrap row;
 }
 .head-icon {
     margin-top: -5px;

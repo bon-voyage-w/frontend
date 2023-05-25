@@ -11,12 +11,22 @@
                 <div class="menu-list-title">
                     User Info
                     <b-button v-b-modal.modal-center style="margin-left: 10px" @click="setDefault">정보 수정하기</b-button>
-                    <b-modal id="modal-center" centered title="정보 수정하기">
+                    <b-modal id="modal-center" centered title="정보 수정하기" @ok="update">
+                      <form ref="form" @submit.stop.prevent="handleSubmit">
                         <div class="modal-body">
                             <div>
-                                <label for="profileImg" class="col-form-label">프로필이미지:</label>
-                                <input type="file" accept="image/*" id="profileImg"/>
+                                <label for="profileImg" class="col-form-label" style="display: inline-block">프로필이미지:</label> <input type="file" accept="image/*" id="profileImg"/>
                             </div>
+                          <div class="form-group">
+                            <label for="id" class="col-form-label">아이디</label>
+                            <div >
+                              <b-input type="text"  v-model="updateUser.id"  id="id" style="width: 85%; display: inline-block"/><img
+                                v-if="updateUser.id"
+                                src="../../assets/signup/ok.svg"
+                                alt=""
+                            />
+                            </div>
+                          </div>
                             <div class="form-group">
                                 <label for="name" class="col-form-label">이름 변경</label>
                                 <div >
@@ -27,6 +37,16 @@
                                 />
                                 </div>
                             </div>
+                          <div class="form-group">
+                            <label for="email" class="col-form-label">이메일</label>
+                            <div >
+                              <b-input type="text"  v-model="updateUser.email"  id="email" style="width: 85%; display: inline-block"/><img
+                                v-if="updateUser.email"
+                                src="../../assets/signup/ok.svg"
+                                alt=""
+                            />
+                            </div>
+                          </div>
                             <div class="form-group">
                                 <label for="ageRange" class="col-form-label">연령대 </label>
                                 <div class="button_action">
@@ -73,6 +93,7 @@
                                 </div>
                             </div>
                         </div>
+                      </form>
                     </b-modal>
                 </div>
                 <ul>
@@ -91,70 +112,16 @@
                     <span class="tooltip">Dashboard</span>
                 </router-link>
             </div>
-            <div class="sidebar-list-item">
-                <router-link to="/about">
-                    <i class="fa fa-user"></i>
-                    <span class="tooltip">About</span>
-                </router-link>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-download"></i>
-                    <span class="tooltip">Download</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-calendar"></i>
-                    <span class="tooltip">Calendar</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-star"></i>
-                    <span class="tooltip">Star</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-shopping-bag"></i>
-                    <span class="tooltip">Products</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-clock-o"></i>
-                    <span class="tooltip">Time</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-cogs"></i>
-                    <span class="tooltip">Config</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-sitemap"></i>
-                    <span class="tooltip">Sitemap</span>
-                </a>
-            </div>
-            <div class="sidebar-list-item">
-                <a href="">
-                    <i class="fa fa-sign-out"></i>
-                    <span class="tooltip">Sign out</span>
-                </a>
-            </div>
         </div>
     </div>
 
 </template>
 
 <script>
-import PrettyRadio from "pretty-checkbox-vue/radio"
-import {mapState} from "vuex";
-import {register} from "@/api/user";
 
+import PrettyRadio from "pretty-checkbox-vue/radio"
+import {updateUser} from "@/api/user";
+import { mapState, mapActions } from "vuex";
 const userStore = "userStore";
 export default {
 
@@ -167,17 +134,22 @@ export default {
                 password_confirmation: "",
                 profileImg:"",
                 ageRange:"",
+                email:"",
+              loginId:"",
             },
             isActive: false,
             age:""
         }
     },
     methods: {
+      ...mapActions(userStore,["getUserInfo"]),
         setDefault(){
             this.updateUser.name = this.userInfo.name;
             this.updateUser.profileImg = this.userInfo.profileImg;
+            this.updateUser.email=this.userInfo.email;
+            this.updateUser.loginId=this.userInfo.loginId;
         },
-        setActive(user) {
+        setActive(user,bvModalEvent) {
             console.log(this.age);
             console.log(user.pw);
             if (
@@ -191,27 +163,35 @@ export default {
                 const validateEemail = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-Za-z0-9\\-]+/;
                 if (validateEemail.test(user.email)) {
                     console.log("된다!");
+                    this.updateUser.ageRange=this.age;
                     this.isActive = true;
-                    user.ageRange=this.age;
                 } else {
+                  bvModalEvent.preventDefault()
                     this.isActive = false;
                 }
             } else {
+              bvModalEvent.preventDefault()
                 this.isActive = false;
             }
         },
-        register(){
-            register(
+        update(){
+          if(this.isActive) {
+            console.log(this.updateUser);
+            updateUser(
                 this.updateUser,
-                () => {
-                    alert("회원가입 성공! 로그인 창으로 이동합니다");
-                    this.$router.push({ name: "login" });
-                },
                 async () => {
-                    alert("회원가입 실패");
+                  alert("정보수정 성공!");
+                  await this.getUserInfo();
+                  this.$router.go(0);
+                },
+                async (response) => {
+                  alert(response);
                 }
             );
-        }
+          }else{
+            alert("모든 칸을 입력해주세요");
+          }
+          },
     },
     computed: {
         ...mapState(userStore, ["userInfo"]),
@@ -289,6 +269,7 @@ export default {
     height: 100%;
     background: #fff;
     box-shadow: 0px 0px 40px 0px rgba(82, 63, 105, 0.1);
+  padding-bottom: 2em;
 }
 
 .menu-logo {
@@ -469,7 +450,6 @@ export default {
 .sidebar-list {
     position: fixed;
     top: 12%;
-
     display: flex;
     flex-direction: column;
     width: 80px;

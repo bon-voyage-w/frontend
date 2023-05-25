@@ -1,13 +1,13 @@
 <template>
     <div class="dashboard">
         <like-card></like-card>
-        <div class="tableGroup">
+        <div class="tableGroup" >
             <div class="table-head">
                 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Compass.png"
                      alt="Airplane" class="head-logo"/>
             </div>
             <div class="table">
-                <div class="table-body">
+                <div class="table-body" >
                     <div class="table-responsive">
                         <table>
                             <thead>
@@ -186,7 +186,7 @@ export default {
 
 
 .table {
-    flex: 0 1 50%;
+    flex: 0 1 80%;
     background: #ffffff;
     border-radius: 6px;
     border: 1px solid #deebfd;

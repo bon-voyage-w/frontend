@@ -11,8 +11,8 @@
         <router-link :to="{ name: 'share-board' }">공유게시판</router-link>
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
-
       <li v-if="userInfo">
+        <a><span style="color: #eabb4d;">{{userInfo.name}}</span>님 반가워요 :)</a>
         <router-link :to="{ name: 'mypage' }">마이페이지</router-link>
         <router-link :to="{ name: 'main' }"><button @click.prevent="onClickLogout">로그아웃</button></router-link>
       </li>
