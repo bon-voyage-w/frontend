@@ -57,7 +57,8 @@ export default {
       "CLEAR_CONDITIONS",
     ]),
     relatedGugunList() {
-      if (this.conditions.sidoCode) this.getRelatedGugun(this.conditions.sidoCode);
+      if (this.conditions.sidoCode)
+        this.getRelatedGugun(this.conditions.sidoCode);
     },
     searchAttraction() {
       if (this.conditions.gugunCode) this.getAttractionList(this.conditions);
@@ -77,5 +78,6 @@ export default {
 }
 .wrap-sido {
   display: inline-block;
+  margin-right: 20px;
 }
 </style>

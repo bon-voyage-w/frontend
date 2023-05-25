@@ -21,11 +21,6 @@ export default {
     ReviewWriteBox,
     ThePageNation,
   },
-  data() {
-    return {};
-  },
-  created() {},
-  methods: {},
 };
 </script>
 
