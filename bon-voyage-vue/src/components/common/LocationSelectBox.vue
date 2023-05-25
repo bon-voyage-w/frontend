@@ -1,6 +1,6 @@
 <template>
   <div class="location-select-box">
-    <div class="wrap-sido" @click="resetGugunList">
+    <div class="wrap-sido" @click="clearGugunSelectList">
       <b-form-select
         v-model="conditions.sidoCode"
         :options="sidos"
@@ -12,6 +12,11 @@
       :options="guguns"
       @change="searchAttraction"
     ></b-form-select>
+    <!-- <b-form-select v-model="conditions.gugunCode" @change="searchAttraction">
+      <option v-for="(gugun, index) in guguns" :key="index" :value="gugun">
+        {{ gugun }}
+      </option>
+    </b-form-select> -->
   </div>
 </template>
 
@@ -35,38 +40,46 @@ export default {
       "conditions",
     ]),
   },
+  // watch: {
+  //   guguns() {
+  //     return this.guguns;
+  //   },
+  // },
   created() {
     // empty
     this.CLEAR_SIDO_LIST();
     this.CLEAR_GUGUN_LIST();
+    this.CLEAR_CONDITIONS();
     // state에 시도 저장
     this.getAllSidoList();
+    // this.conditions = [];
   },
   methods: {
-    ...mapActions(attractionStore, ["getAllSidoList", "getRelatedGugun", "getAttractionList"]),
+    ...mapActions(attractionStore, [
+      "getAllSidoList",
+      "getRelatedGugun",
+      "getAttractionList",
+    ]),
     ...mapMutations(attractionStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_ATTRACTION_LIST",
-      "SELECT_LOCATION",
+      "CLEAR_CONDITIONS",
     ]),
-
     relatedGugunList() {
-      this.SELECT_LOCATION;
       this.CLEAR_GUGUN_LIST;
-      this.gugunCode = null;
-      if (this.conditions.sidoCode) this.getRelatedGugun(this.conditions.sidoCode);
+      this.conditions.gugunCode = null;
+      // this.gugunCode = null;
+      if (this.conditions.sidoCode)
+        this.getRelatedGugun(this.conditions.sidoCode);
     },
     searchAttraction() {
-<<<<<<< HEAD
-      if (this.gugunCode) this.getAttractionList(this.sidoCode, this.gugunCode);
-=======
       if (this.conditions.gugunCode) this.getAttractionList(this.conditions);
     },
-    resetGugunList() {
+    clearGugunSelectList() {
+      console.log("제발 구군리스트 리셋돼라.....제발.....");
       this.CLEAR_GUGUN_LIST;
-      this.gugunCode = null;
->>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
+      this.conditions.gugunCode = null;
     },
   },
 };

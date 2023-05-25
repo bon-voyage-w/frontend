@@ -1,7 +1,8 @@
 <template>
-  <div class="wrap-map">
-    <button class="my-location" @click="currentLocation()">
-      주변 관광지 보기
+  <div class="wrap-kakao-map">
+    <button class="btn my-location" @click="currentLocation()">
+      <font-awesome-icon :icon="['fal', 'bars']" style="color: #000000" />현재
+      위치
     </button>
     <div id="map"></div>
   </div>
@@ -12,7 +13,7 @@ import { mapState } from "vuex";
 
 const attractionStore = "attractionStore";
 export default {
-  name: "TheMap",
+  name: "TheKakaoMap",
   components: {},
   data() {
     return {
@@ -138,36 +139,45 @@ export default {
 </script>
 
 <style scoped>
-.wrap-map {
-  position: relative;
-  width: 800px;
-  margin: 100px auto;
+.wrap-kakao-map {
+  width: 100%;
+  height: 100%;
 }
 #map {
   width: 100%;
-  height: 500px;
-  border-radius: 10px;
+  height: 100%;
 }
-.my-location {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.btn {
+  top: 80px;
   z-index: 100;
 
-  width: 160px;
+  width: 140px;
   padding: 10px 0;
 
-  background-color: #eabb4d;
+  background-color: #ffffff;
   border-radius: 10px;
 
-  color: white;
+  color: rgb(0, 0, 0);
   transition: 0.1s ease-in;
   /* margin: 5px auto; */
   border-radius: 10px;
+  box-shadow: 0px 0px 3px 1px #a8a8a8;
+}
+.btn:hover {
+  background-color: #eabb4d;
+  font-weight: bold;
+  color: white;
+}
+.my-location {
+  position: absolute;
+  right: 10px;
+
   margin-left: 1000px;
 }
-.my-location:hover {
-  background-color: #4b548b;
-  font-weight: bold;
+.btn-open-side-bar {
+  position: absolute;
+  left: 10px;
+
+  margin-right: 1000px;
 }
 </style>

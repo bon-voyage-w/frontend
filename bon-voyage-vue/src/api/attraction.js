@@ -8,15 +8,15 @@ function allSidoList(success, fail) {
 function relatedGugunList(params, success, fail) {
   attraction.get(`/gugun-info`, { params: params }).then(success).catch(fail);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
 function attractionList(params, success, fail) {
-  console.log("@@@@@@@@", params.sidoCode);
-  attraction.get(`/search`, { params: params }).then(success).catch(fail);
+  attraction
+    // [수정필요] 페이지 관련 파라미터 임시로 넘기기
+    .get(`/search?pageNumber=0&pageSize=6`, { params: params })
+    .then(success)
+    .catch(fail);
 }
 function allAttractionList(success, fail) {
-  attraction.get().then(success).catch(fail);
+  // [수정필요] 페이지 관련 파라미터 임시로 넘기기
+  attraction.get(`?pageNumber=0&pageSize=6`).then(success).catch(fail);
 }
 export { allSidoList, relatedGugunList, attractionList, allAttractionList };

@@ -17,7 +17,7 @@ const attractionStore = {
       sidoCode: null,
       gugunCode: null,
       keyword: null,
-      category: null,
+      contentTypeId: 0,
     },
   },
   getters: {},
@@ -32,6 +32,22 @@ const attractionStore = {
     CLEAR_ATTRACTION_LIST(state) {
       state.attractions = [];
       state.attraction = null;
+    },
+    CLEAR_CONDITIONS(state) {
+      state.conditions = {
+        sidoCode: null,
+        gugunCode: null,
+        keyword: null,
+        contentTypeId: 0,
+      };
+    },
+    // change conditions
+    GET_CONDITIONS_KEYWORD(state, inputKeyword) {
+      state.conditions.keyword = inputKeyword;
+      console.log(
+        " @@@@@@@@@@@@@@@@@@ GET_CONDITIONS_KEYWORD(state, data) ::: ",
+        inputKeyword
+      );
     },
     // get
     GET_ALL_SIDO_LIST(state, data) {
@@ -53,6 +69,10 @@ const attractionStore = {
     },
   },
   actions: {
+    // change
+    getConditionsKeyword: ({ commit }, inputKeyword) => {
+      commit("GET_CONDITIONS_KEYWORD", inputKeyword);
+    },
     // get
     getAllSidoList: ({ commit }) => {
       allSidoList(
@@ -76,15 +96,6 @@ const attractionStore = {
         }
       );
     },
-<<<<<<< HEAD
-    getAttractionList: ({ commit }, { sidoCode, gugunCode }) => {
-      const params = { sidoCode: sidoCode, gugunCode: gugunCode };
-      console.log(
-        "시도 구군 코드를 파라미터로 받은 거 확인하기 >>>>> ",
-        sidoCode,
-        gugunCode
-      );
-=======
     getAllAttractionList: ({ commit }) =>
       allAttractionList(
         ({ data }) => {
@@ -94,10 +105,9 @@ const attractionStore = {
           console.log(error);
         }
       ),
-    getAttractionList: ({ commit }, loc) => {
->>>>>>> 8174f7b9cbe3f3d917ca924898a40c919b31b95c
+    getAttractionList: ({ commit }, conditions) => {
       attractionList(
-        loc,
+        conditions,
         ({ data }) => {
           commit("SET_ATTRACTION_LIST", data);
         },

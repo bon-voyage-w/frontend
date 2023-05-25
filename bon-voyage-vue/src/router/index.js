@@ -20,6 +20,12 @@ const routes = [
     path: "/attractions",
     name: "attraction",
     component: AppAttraction,
+    // children: [
+    //   {
+    //     path: "/:contentId",
+    //     component:AppAttractionDetail
+    //   }
+    // ]
   },
   {
     path: "/share-boards",
