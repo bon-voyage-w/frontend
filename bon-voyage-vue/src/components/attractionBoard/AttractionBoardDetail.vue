@@ -1,18 +1,24 @@
 <template>
   <div>
-    <img :src="attractionDetail.attractionInfoDto.firstImage" />
+    <div class="wrap-attraction-detail">
+      <img :src="attractionDetail.attractionInfoDto.firstImage" />
+      <div class="wrap-attraction-detail-text">
+        <button id="like" class="btn-like">
+          <font-awesome-icon
+            :icon="['far', 'heart']"
+            size="2xl"
+            style="color: #696969"
+          />
+        </button>
+        <h2>{{ attractionDetail.attractionInfoDto.title }}</h2>
 
-    <h2>{{ attractionDetail.attractionInfoDto.title }}</h2>
-    <h5>{{ attractionDetail.attractionInfoDto.addr1 }}</h5>
-    <p>
-      {{ attractionDetail.overview }}
-    </p>
-    <hr />
+        <h5>{{ attractionDetail.attractionInfoDto.addr1 }}</h5>
 
-    <!-- 좌측 이미지 -->
-    <!-- 우측 제목, 주소, 상세설명 -->
-
-    <!-- 하단 리뷰 -->
+        <p>
+          {{ attractionDetail.overview }}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +32,7 @@ export default {
       attractionDetail: {},
     };
   },
+
   created() {
     let selectedContentId = this.$route.params.contentId;
 
@@ -45,4 +52,34 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrap-attraction-detail {
+  display: flex;
+  gap: 30px;
+  width: 1000px;
+  margin: 150px auto 0 auto;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 120px;
+}
+.wrap-attraction-detail img {
+  width: 450px;
+  height: 500px;
+  object-fit: cover;
+}
+.wrap-attraction-detail-text {
+  padding-left: 0px;
+}
+.wrap-attraction-detail-text h2 {
+  margin-bottom: 20px;
+}
+.wrap-attraction-detail-text h5 {
+  margin-bottom: 30px;
+}
+.wrap-attraction-detail-text p {
+  line-height: 1.8em;
+  text-align: justify;
+}
+.btn-like {
+  float: right;
+}
+</style>

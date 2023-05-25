@@ -5,11 +5,11 @@ import AppNotice from "@/views/AppNotice";
 import AppShareBoard from "@/views/AppShareBoard";
 import AppAttraction from "@/views/AppAttraction";
 import AppRoute from "@/views/AppRoute";
+import AppAttractionBoardDetail from "@/views/AppAttractionBoardDetail";
+
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
-import AttractionBoardDetail from "@/components/attractionBoard/AttractionBoardDetail";
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,7 +33,7 @@ const routes = [
   {
     path: "/attractions/:contentId",
     name: "attractiondetail",
-    component: AttractionBoardDetail,
+    component: AppAttractionBoardDetail,
   },
   {
     path: "/routes",

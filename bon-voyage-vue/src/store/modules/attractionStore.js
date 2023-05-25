@@ -3,7 +3,7 @@ import {
   relatedGugunList,
   attractionList,
   allAttractionList,
-  selectedAttraction,
+  AttractionDetailByContentId,
 } from "@/api/attraction.js";
 
 const attractionStore = {
@@ -123,7 +123,7 @@ const attractionStore = {
       );
     },
     detailAttraction: ({ commit }, contentId) => {
-      selectedAttraction(
+      AttractionDetailByContentId(
         contentId,
         ({ data }) => {
           commit("SET_DETAIL_ATTRACTION", data);
