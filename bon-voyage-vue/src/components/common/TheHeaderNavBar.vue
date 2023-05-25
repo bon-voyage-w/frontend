@@ -12,23 +12,52 @@
         <router-link :to="{ name: 'share-board' }">공유게시판</router-link>
         <router-link :to="{ name: 'notice' }">공지사항</router-link>
       </li>
-      <li>
-        <router-link :to="{ name: 'main' }">로그인</router-link>
-        <router-link :to="{ name: 'main' }">회원가입</router-link>
+      <li v-if="userInfo">
+        <a><span style="color: #eabb4d;">{{userInfo.name}}</span>님 반가워요 :)</a>
+        <router-link :to="{ name: 'mypage' }">마이페이지</router-link>
+        <router-link :to="{ name: 'main' }"><button @click.prevent="onClickLogout">로그아웃</button></router-link>
+      </li>
+      <li v-else>
+        <router-link :to="{ name: 'login' }">로그인</router-link>
+        <router-link :to="{ name: 'signup' }">회원가입</router-link>
       </li>
     </ul>
   </header>
 </template>
 
 <script>
+import { mapState,mapGetters,mapActions} from "vuex";
+const userStore = "userStore";
+
 export default {
   name: "TheHeaderNavBar",
   components: {},
   data() {
     return {};
   },
-  created() {},
-  methods: {},
+  created() {
+   },
+  computed: {
+    ...mapState(userStore, ["isLogin", "isLoginError", "userInfo"]),
+    ...mapGetters(["checkUserInfo"]),
+  },
+  methods: {
+    ...mapActions(userStore, ["userLogout","getUserInfo"]),
+    onClickLogout() {
+      // this.SET_IS_LOGIN(false);
+      // this.SET_USER_INFO(null);
+      // sessionStorage.removeItem("access-token");
+      // if (this.$route.path != "/") this.$router.push({ name: "main" });
+      console.log(this.userInfo.userid);
+      //vuex actions에서 userLogout 실행(Backend에 저장 된 리프레시 토큰 없애기
+      //+ satate에 isLogin, userInfo 정보 변경)
+      // this.$store.dispatch("userLogout", this.userInfo.userid);
+      this.userLogout();
+      sessionStorage.removeItem("access-token"); //저장된 토큰 없애기
+      sessionStorage.removeItem("refresh-token"); //저장된 토큰 없애기
+      if (this.$route.path != "/") this.$router.push({ name: "main" });
+    },
+  },
 };
 </script>
 <style scoped>

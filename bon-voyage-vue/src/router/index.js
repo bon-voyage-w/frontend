@@ -10,6 +10,13 @@ import AppAttractionBoardDetail from "@/views/AppAttractionBoardDetail";
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
+import AppLogin from "@/views/AppLogin";
+import KakaoAuth from "@/components/auth/KakaoAuth"
+import AppSignUp from "@/views/AppSignUp.vue";
+import AppMyPage from "@/views/AppMyPage.vue";
+
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -67,6 +74,26 @@ const routes = [
         component: BoardModify,
       },
     ],
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: AppLogin,
+  },
+  {
+    path: "/oauth/kakao/callback",
+    name: "kakaoauth",
+    component: KakaoAuth,
+  },
+  {
+    path: "/sign-up",
+    name: "signup",
+    component: AppSignUp,
+  },
+  {
+    path: "/my-page",
+    name: "mypage",
+    component: AppMyPage,
   },
 ];
 

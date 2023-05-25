@@ -11,6 +11,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import "@/api/lib/fontAwesomeIcon.js"; // fontAwesomeIcon.js 불러옴
 
+require("pretty-checkbox/src/pretty-checkbox.scss");
+import "@mdi/font/css/materialdesignicons.css";
+
 Vue.config.productionTip = false;
 
 new Vue({

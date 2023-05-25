@@ -5,6 +5,9 @@ import {
   allAttractionList,
   AttractionDetailByContentId,
 } from "@/api/attraction.js";
+import {
+  myPageLike,
+} from "@/api/user.js"
 
 const attractionStore = {
   namespaced: true,
@@ -20,8 +23,14 @@ const attractionStore = {
       keyword: null,
       contentTypeId: 0,
     },
+    userLikeAttractions: [],
   },
-  getters: {},
+  getters: {
+    getLimitUserLikeAttractions : function (state) {
+      return state.userLikeAttractions;
+    },
+
+  },
   mutations: {
     // empty
     CLEAR_SIDO_LIST(state) {
@@ -70,6 +79,9 @@ const attractionStore = {
 
       state.attraction = attraction;
     },
+    SET_USER_LIKE_ATTRACTION_LIST: function (state,attractions){
+      return state.userLikeAttractions=attractions;
+    }
   },
   actions: {
     // change
@@ -136,6 +148,16 @@ const attractionStore = {
     },
     commitClearGugunList: ({ commit }) => {
       commit("CLEAR_GUGUN_LIST", "");
+    },
+    async getLikeAttraction ({commit}) {
+      await myPageLike(
+          ({data}) => {
+            commit("SET_USER_LIKE_ATTRACTION_LIST", data);
+          },
+          (error) => {
+            console.log(error);
+          }
+      );
     },
   },
 };

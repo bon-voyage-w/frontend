@@ -3,11 +3,24 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import attractionStore from "@/store/modules/attractionStore";
 
-Vue.use(Vuex);
+import userStore from '@/store/modules/userStore';
+import reviewStore from "@/store/modules/reviewStore"
+
+Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+  },
+  getters: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
   modules: {
+    userStore,
     attractionStore,
+    reviewStore,
   },
   plugins: [
     createPersistedState({
