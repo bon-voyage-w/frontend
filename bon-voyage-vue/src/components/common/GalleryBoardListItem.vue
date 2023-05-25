@@ -1,20 +1,24 @@
 <template>
-  <button class="placeinfo-list-item">
-    <img src="https://placekitten.com/300/300" alt="" />
+  <button class="placeinfo-list-item" @click="selectAttraction">
+    <img :src="attraction.firstImage" alt="" @error="replaceNoImg" />
     <div class="placeinfo-list-item-text">
-      <h3>국립 청태산자연휴양림</h3>
-      <p>강원도 횡성군 둔내면 청태산로 610</p>
+      <h3>{{ attraction.title }}</h3>
+      <p>{{ attraction.addr1 }}</p>
     </div>
   </button>
 </template>
 
 <script>
 export default {
-  name: "PlaceInfoListItem",
-  data() {
-    return {
-      message: "",
-    };
+  name: "GalleryBoardListItem",
+  props: {
+    attraction: Object,
+  },
+  methods: {
+    selectAttraction() {},
+    replaceNoImg(e) {
+      e.target.src = "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
+    },
   },
 };
 </script>
@@ -29,7 +33,8 @@ export default {
 }
 .placeinfo-list-item img {
   width: 100%;
-  /* aspect-ratio: 1; */
+
+  aspect-ratio: 2/1.6;
   object-fit: cover;
   margin-bottom: 10px;
 }

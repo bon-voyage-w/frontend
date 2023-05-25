@@ -1,35 +1,37 @@
 <template>
   <div class="placeinfo-list">
-    <LocationSelectBox />
-    <place-info-nav></place-info-nav>
-
     <div class="placeinfo-list-contents">
-      <GalleryBoardListItem />
-      <GalleryBoardListItem />
-      <GalleryBoardListItem />
-      <GalleryBoardListItem />
-      <GalleryBoardListItem />
-      <GalleryBoardListItem />
+      <GalleryBoardListItem
+        v-for="attraction in attractions.content"
+        :key="attraction.contentId"
+        :attraction="attraction"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import LocationSelectBox from "@/components/common/LocationSelectBox.vue";
-import PlaceInfoNav from "@/components/common/PlaceInfoNav";
 import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
+import { mapState, mapActions } from "vuex";
+
+const attractionStore = "attractionStore";
 
 export default {
-  name: "PlaceInfoList",
+  name: "GalleryBoardList",
   components: {
-    LocationSelectBox,
-    PlaceInfoNav,
     GalleryBoardListItem,
   },
   data() {
-    return {
-      message: "",
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(attractionStore, ["attractions"]),
+  },
+  created() {
+    this.getAllAttractionList();
+  },
+  methods: {
+    ...mapActions(attractionStore, ["getAllAttractionList"]),
   },
 };
 </script>

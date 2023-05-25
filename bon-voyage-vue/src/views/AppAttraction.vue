@@ -1,40 +1,28 @@
 <template>
-  <div>
-    <div class="placeinfo-list-title">
-      <h2>원하는 대로 검색하기</h2>
-      <p>검색검색검색검색검색검색검색검색검색검색검색검색검색검색</p>
-    </div>
-    <SearchBox></SearchBox>
-    <TheMap></TheMap>
-    <GalleryBoardList></GalleryBoardList>
+  <div class="wrap-app-kakao-map">
+    <MapSideBar></MapSideBar>
+    <TheKakaoMap></TheKakaoMap>
   </div>
 </template>
 
 <script>
-import SearchBox from "@/components/common/SearchBox.vue";
-import TheMap from "@/components/common/TheMap.vue";
-import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
-
+import TheKakaoMap from "@/components/map/TheKakaoMap.vue";
+import MapSideBar from "@/components/map/MapSideBar.vue";
 export default {
   name: "AppAttraction",
   components: {
-    SearchBox,
-    TheMap,
-    GalleryBoardList,
+    TheKakaoMap,
+    MapSideBar,
   },
-  data() {
-    return {
-      message: "",
-    };
-  },
+
   created() {},
   methods: {},
 };
 </script>
 
 <style scoped>
-.placeinfo-list-title {
-  text-align: center;
-  margin: 120px 0 80px 0;
+.wrap-app-kakao-map {
+  width: 100vw;
+  height: 100vh;
 }
 </style>
