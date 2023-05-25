@@ -1,5 +1,5 @@
 //import router from "@/router";
-import {login, findUserInfoById, logout, register} from "@/api/user";
+import {login, findUserInfoById, logout} from "@/api/user";
 
 const userStore = {
     namespaced: true,
@@ -99,23 +99,6 @@ const userStore = {
                 },
                 (error) => {
                     console.log(error);
-                }
-            );
-        },
-        async registerNewUser({commit},userInfo) {
-            console.log(JSON.stringify(userInfo));
-            await register(
-                userInfo,
-                (response) => {
-                    if (response.status === 201) {
-                        console.log("회원가입 이동");
-                    } else {
-                        console.log(response.data);
-                    }
-                },
-                (error) => {
-                    console.log(error);
-                    commit("SET_IS_LOGIN", false);
                 }
             );
         },

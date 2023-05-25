@@ -74,6 +74,10 @@
 
 import { mapActions } from "vuex";
 const userStore = "userStore";
+// import http from "@/api/http"
+// import {apiInstance} from "@/api";
+import {register} from "@/api/user";
+
 
 export default {
 
@@ -113,10 +117,17 @@ export default {
             }
         },
         register(){
-            console.log(this.newUser);
-            this.registerNewUser(this.newUser);
-            alert("로그인 페이지로 이동합니다");
-            this.$router.push({ name: "login" });
+            register(
+                this.newUser,
+                () => {
+                    alert("회원가입 성공! 로그인 창으로 이동합니다");
+                    this.$router.push({ name: "login" });
+                },
+                async () => {
+                    alert("회원가입 실패");
+                }
+            );
+
         }
     },
     watch: {

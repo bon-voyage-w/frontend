@@ -1,11 +1,19 @@
 <template>
     <div class="card">
-        <h3>여행지1</h3>
-        <div class="num">리뷰 남긴 내용 어쩌구 저쩌구</div>
+        <h3>{{ attraction.title }}</h3>
+        <div class="num">{{ review.reviewContent }}</div>
     </div>
 </template>
 <script>
+// import api.
+// import { apiInstance } from "./index.js";
+// import http from "@/api/http-common.js"
 
+export default {
+    created(){
+    //     apiInstance().get("").
+    }
+}
 </script>
 <style>
 .card {

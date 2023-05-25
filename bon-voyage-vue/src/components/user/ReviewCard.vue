@@ -7,7 +7,11 @@
         <div class="reviewGroup">
             <br>
             <div class="cards">
-                <text-card-item></text-card-item>
+                <text-card-item
+                    v-for="review in getReviewList"
+                    :key="review.reviewId"
+                    :review="review"
+                />
             </div>
         </div>
     </div>
@@ -87,6 +91,9 @@
 </style>
 <script>
 import TextCardItem from "@/components/common/TextCardItem.vue";
+import { mapGetters} from "vuex";
+const reviewStore ="reviewStore";
+
 export default {
     data() {
         return {
@@ -96,7 +103,9 @@ export default {
         TextCardItem,
     },
     created() {
-        console.log("reviewCard나옴");
+    },
+    computed : {
+        ...mapGetters(reviewStore,["getReviewList"])
     }
 }
 </script>
