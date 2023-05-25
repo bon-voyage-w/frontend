@@ -4,34 +4,34 @@
         <div class="in">
             <label for="loginId">아이디</label>
             <div>
-                <input type="text" v-model="registerUser.loginId" placeholder="아이디 입력" /><img
-                    v-if="loginId"
+                <input type="text" v-model="newUser.loginId" placeholder="아이디 입력" /><img
+                    v-if="newUser.loginId"
                     src="../assets/signup/ok.svg"
                     alt=""
             />
             </div>
             <label for="name">이름</label>
             <div>
-                <input type="text" v-model="registerUser.name" placeholder="사용할 이름을 입력" /><img
-                    v-if="registerUser.name"
+                <input type="text" v-model="newUser.name" placeholder="사용할 이름을 입력" /><img
+                    v-if="newUser.name"
                     src="../assets/signup/ok.svg"
                     alt=""
             />
             </div>
-            <label for="mail">이메일</label>
+            <label for="email">이메일</label>
             <div>
-                <input type="text" v-model="registerUser.mail" placeholder="이메일주소 입력" /><img
-                    v-if="registerUser.mail.length >= 6"
+                <input type="text" v-model="newUser.email" placeholder="이메일주소 입력" /><img
+                    v-if="newUser.email.length >= 6"
                     src="../assets/signup/ok.svg"
                     alt=""
             />
             </div>
 
             <div class="button_action">
-                <button v-on:click="registerUser.mail = registerUser.mail + '@gmail.com'">@gmail.com</button>
-                <button v-on:click="registerUser.mail = registerUser.mail + '@naver.com'">@naver.com</button>
-                <button v-on:click="registerUser.mail = registerUser.mail + '@kakao.com'">@kakao.com</button>
-                <button v-on:click="registerUser.mail = registerUser.mail + '@daum.net'">@daum.net</button>
+                <button v-on:click="newUser.email = newUser.email + '@gemail.com'">@gemail.com</button>
+                <button v-on:click="newUser.email = newUser.email + '@naver.com'">@naver.com</button>
+                <button v-on:click="newUser.email = newUser.email + '@kakao.com'">@kakao.com</button>
+                <button v-on:click="newUser.email = newUser.email + '@daum.net'">@daum.net</button>
             </div>
         </div>
 
@@ -39,26 +39,26 @@
             <label for="pw">비밀번호</label>
             <div>
                 <input
-                        v-model="pw"
+                        v-model="newUser.pw"
                         type="password"
                         placeholder="6글자 이상으로 만들어주세요"
                         required
-                /><img v-if="registerUser.pw.length >= 6" src="../assets/signup/ok.svg" alt="" />
+                /><img v-if="newUser.pw.length >= 6" src="../assets/signup/ok.svg" alt="" />
             </div>
             <div class="password_bar">
-                <div :class="{ bar: true, green: registerUser.pw.length >= 1 }"></div>
-                <div :class="{ bar: true, green: registerUser.pw.length >= 3 }"></div>
-                <div :class="{ bar: true, green: registerUser.pw.length > 5 }"></div>
+                <div :class="{ bar: true, green: newUser.pw.length >= 1 }"></div>
+                <div :class="{ bar: true, green: newUser.pw.length >= 3 }"></div>
+                <div :class="{ bar: true, green: newUser.pw.length > 5 }"></div>
             </div>
             <label for="password_confimation">비밀번호 확인</label>
             <div>
                 <input
-                        v-model="registerUser.password_confirmation"
+                        v-model="newUser.password_confirmation"
                         type="password"
                         placeholder="비밀번호 입력..."
                         required
                 />
-                <img v-if="registerUser.pw === registerUser.password_confirmation" src="../assets/signup/ok.svg" alt="" /><img
+                <img v-if="newUser.pw === newUser.password_confirmation" src="../assets/signup/ok.svg" alt="" /><img
                     v-else
                     src="../assets/signup/not_ok.svg"
                     alt=""
@@ -79,34 +79,30 @@ export default {
 
     data() {
         return {
-            registerUser:{
+            newUser:{
                 pw: "",
                 loginId: "",
                 name: "",
-                mail: "",
+                email: "",
                 password_confirmation: "",
             },
+
             isActive: false,
         };
     },
     methods: {
-        ...mapActions(userStore,["registerUser"]),
+        ...mapActions(userStore,["registerNewUser"]),
         setActive() {
-            console.log(this.loginId);
-            console.log(this.name);
-            console.log(this.pw);
-            console.log(this.mail);
-            console.log(this.password_confirmation);
             if (
-                this.pw.length >= 6 &&
-                this.loginId != "" &&
-                this.name != "" &&
-                this.mail != "" &&
-                this.pw === this.password_confirmation
+                this.newUser.pw.length >= 6 &&
+                this.newUser.loginId != "" &&
+                this.newUser.name != "" &&
+                this.newUser.email != "" &&
+                this.newUser.pw === this.newUser.password_confirmation
             ) {
                 console.log("되나?");
-                const validateEmail = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-Za-z0-9\\-]+/;
-                if (validateEmail.test(this.mail)) {
+                const validateEemail = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-Za-z0-9\\-]+/;
+                if (validateEemail.test(this.newUser.email)) {
                     console.log("된다!");
                     this.isActive = true;
                 } else {
@@ -117,13 +113,19 @@ export default {
             }
         },
         register(){
-            this.registerUser();
+            console.log(this.newUser);
+            this.registerNewUser(this.newUser);
             alert("로그인 페이지로 이동합니다");
             this.$router.push({ name: "login" });
         }
     },
     watch: {
-        registerUser: "setActive",
+        newUser: {
+            deep: true,
+            handler() {
+                this.setActive();
+            }
+        },
     },
 };
 </script>

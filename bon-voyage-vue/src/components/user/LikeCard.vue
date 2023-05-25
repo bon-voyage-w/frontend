@@ -9,7 +9,7 @@
             <!--    <h4>좋아요 한 여행지</h4>-->
             <div style="display: flex; flex: 0 1 100%">
                 <circle-img-card-item
-                        v-for="attraction in userLikeAttractions"
+                        v-for="attraction in getLimitUserLikeAttractions"
                         :key="attraction.contentId"
                         :attraction="attraction"
                 />
@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import {mapGetters, mapState} from "vuex";
+import {mapGetters} from "vuex";
 
 import CircleImgCardItem from "@/components/common/CircleImgCardItem.vue";
 const attractionStore="attractionStore";
@@ -38,7 +38,7 @@ export default {
     },
     computed : {
         ...mapGetters(attractionStore,["getLimitUserLikeAttractions"]),
-        ...mapState(attractionStore,["userLikeAttractions"]),
+        // ...mapState(attractionStore,["userLikeAttractions"]),
     },
 }
 </script>

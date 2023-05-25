@@ -18,7 +18,7 @@
       </li>
       <li v-else>
         <router-link :to="{ name: 'login' }">로그인</router-link>
-        <router-link :to="{ name: 'main' }">회원가입</router-link>
+        <router-link :to="{ name: 'signup' }">회원가입</router-link>
       </li>
     </ul>
   </header>

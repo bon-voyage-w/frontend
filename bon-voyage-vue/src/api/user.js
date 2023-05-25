@@ -31,6 +31,10 @@ async function myPageLike(success, fail) {
   api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
   await api.get(`/users/like`).then(success).catch(fail);
 }
+async function register(userInfo,success, fail) {
+  api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
+  await api.post(`/users`, JSON.stringify(userInfo)).then(success).catch(fail);
+}
 async function myPageRoute(success, fail) {
   api.defaults.headers["Authorization"] = sessionStorage.getItem("access-token");
   await api.get(`/users/routes`).then(success).catch(fail);
@@ -41,4 +45,4 @@ async function myPageReview(success, fail) {
 }
 
 
-export { login,findUserInfoById,logout,myPageLike,myPageReview,myPageRoute };
+export { login,findUserInfoById,logout,myPageLike,myPageReview,myPageRoute,register };
