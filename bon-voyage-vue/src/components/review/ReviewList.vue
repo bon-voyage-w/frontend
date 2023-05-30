@@ -1,19 +1,18 @@
 <template>
   <div class="wrap-review-list">
-    <p>리뷰 n개</p>
     <ReviewListItem
-      v-for="review in reviews"
-      :key="review.reviewId"
-      :reveiw="review"
+      v-for="(review, index) in reviews"
+      :key="index"
+      :review="review"
     />
   </div>
 </template>
 
 <script>
-import attractionStore from "@/store/modules/attractionStore";
-import ReviewListItem from "./ReviewListItem.vue";
-import { mapState, mapActions } from "vuex";
+import ReviewListItem from "@/components/review/ReviewListItem";
+import { mapState, mapGetters, mapActions } from "vuex";
 
+const attractionStore = "attractionStore";
 const reviewStore = "reviewStore";
 
 export default {
@@ -23,21 +22,13 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(attractionStore, ["selectedAttraction"]),
+    ...mapState(reviewStore, ["reviews"]),
+    ...mapGetters(attractionStore, {
+      contentIdForReview: "getAttractionContentId",
+    }),
   },
   created() {
-    // this.selectedId = this.$route.params.contentId;
-    // AttractionDetailByContentId(
-    //   // console.log(this.selectedId),
-    //   this.selectedId,
-    //   ({ data }) => {
-    //     this.attractionDetail = data;
-    //     console.log(data);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    this.getAttractionReviewList(this.contentIdForReview);
   },
   methods: {
     ...mapActions(reviewStore, ["getAttractionReviewList"]),

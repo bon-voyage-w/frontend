@@ -40,7 +40,6 @@
 </template>
 
 <script>
-// import { AttractionDetailByContentId } from "@/api/attraction";
 import { mapState, mapActions } from "vuex";
 import { like, dislike } from "@/api/user";
 
@@ -55,23 +54,12 @@ export default {
       selectedId: "",
     };
   },
+
   computed: {
     ...mapState(attractionStore, ["selectedAttractionInfo"]),
   },
   created() {
-    // attraction
     this.selectedId = this.$route.params.contentId;
-    // AttractionDetailByContentId(
-    //   // console.log(this.selectedId),
-    //   this.selectedId,
-    //   ({ data }) => {
-    //     this.attractionDetail = data;
-    //     console.log(data);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
     this.selectAttraction(this.selectedId);
   },
   methods: {

@@ -2,8 +2,8 @@
   <ul>
     <li>
       <div class="review-id">
-        <!-- <div class="profile-image">
-          <img
+        <div class="profile-image">
+          <!-- <img
             :src="userInfo.profileImg"
             style="
               width: 50px;
@@ -11,23 +11,30 @@
               object-fit: contain;
               border-radius: 50%;
             "
-          />
-        </div> -->
-        <p>review.writerName</p>
+            @error="replaceNoImg"
+          /> -->
+        </div>
+        <p>{{ review.writerName }}</p>
       </div>
-      <p>review.reviewContent</p>
-      <p>review.writeDate</p>
+      <p>{{ review.reviewContent }}</p>
+      <p>
+        {{ review.writeDate }}
+      </p>
     </li>
   </ul>
 </template>
 
 <script>
-import { mapState } from "vuex";
-const userStore = "userStore";
 export default {
   name: "ReviewListItem",
-  computed: {
-    ...mapState(userStore, ["userInfo"]),
+  props: {
+    review: Object,
+  },
+  methods: {
+    // replaceNoImg(e) {
+    //   e.target.src =
+    //     "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
+    // },
   },
 };
 </script>

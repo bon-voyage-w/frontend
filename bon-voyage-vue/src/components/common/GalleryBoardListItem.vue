@@ -25,7 +25,6 @@ export default {
     replaceNoImg(e) {
       e.target.src =
         "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
-      console.log("******** ", this.attraction);
     },
   },
 };

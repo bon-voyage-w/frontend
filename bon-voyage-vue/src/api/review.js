@@ -2,8 +2,9 @@ import { reviewInstance } from "@/api/index.js";
 
 const review = reviewInstance();
 
-function listReview(param, success, fail) {
-  review.get({ params: param }).then(success).catch(fail);
+function listReview(contentId, success, fail) {
+  review.get(``, { contentId: contentId }).then(success).catch(fail);
+  console.log("api ::: listReview ");
 }
 
 function writeReview(review, success, fail) {

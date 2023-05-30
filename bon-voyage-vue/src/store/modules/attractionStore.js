@@ -27,6 +27,9 @@ const attractionStore = {
     getLimitUserLikeAttractions: function (state) {
       return state.userLikeAttractions;
     },
+    getAttractionContentId: function (state) {
+      return state.selectedAttractionInfo.attractionInfoDto.contentId;
+    },
   },
   mutations: {
     // empty
@@ -65,7 +68,6 @@ const attractionStore = {
       state.conditions.keyword = inputKeyword;
     },
     SET_CONDITIONS_CONTENT_TYPE_ID(state, selectedContentType) {
-      console.log("mutation 호출!");
       state.conditions.contentTypeId = selectedContentType;
     },
     SET_ATTRACTION_LIST(state, attractions) {
@@ -73,7 +75,6 @@ const attractionStore = {
     },
     SET_SELECTED_ATTRACTION(state, attraction) {
       state.selectedAttractionInfo = attraction;
-      console.log("mutations ::: ", attraction);
     },
     SET_USER_LIKE_ATTRACTION_LIST: function (state, attractions) {
       return (state.userLikeAttractions = attractions);
@@ -135,7 +136,6 @@ const attractionStore = {
         contentId,
         ({ data }) => {
           commit("SET_SELECTED_ATTRACTION", data);
-          console.log("atcions ::: ", contentId);
         },
         (error) => {
           console.log(error);

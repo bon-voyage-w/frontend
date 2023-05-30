@@ -5,12 +5,12 @@ const reviewStore = {
   namespaced: true,
   state: {
     reviews: [],
-    review: null,
+    // review: null,
   },
   getters: {
-    getReviewList: function (state) {
-      return state.reviews;
-    },
+    // getReviewList: function (state) {
+    //   return state.reviews;
+    // },
   },
   mutations: {
     SET_REVIEW_LIST: (state, reviews) => {

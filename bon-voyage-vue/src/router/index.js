@@ -5,7 +5,9 @@ import AppNotice from "@/views/AppNotice";
 import AppShareBoard from "@/views/AppShareBoard";
 import AppAttraction from "@/views/AppAttraction";
 import AppRoute from "@/views/AppRoute";
-import AppAttractionBoardDetail from "@/views/AppAttractionBoardDetail";
+import AppAttractionDetail from "@/views/AppAttractionDetail";
+
+// import AttractionBoardDetail from "@/components/attractionBoard/AttractionBoardDetail";
 
 import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
@@ -32,7 +34,7 @@ const routes = [
   {
     path: "/attractions/:contentId",
     name: "attractiondetail",
-    component: AppAttractionBoardDetail,
+    component: AppAttractionDetail,
   },
   {
     path: "/routes",

@@ -3,7 +3,6 @@
     <AttractionBoardDetail></AttractionBoardDetail>
     <ReviewWriteBox></ReviewWriteBox>
     <ReviewList></ReviewList>
-    <ThePageNation></ThePageNation>
   </div>
 </template>
 
@@ -11,16 +10,21 @@
 import AttractionBoardDetail from "@/components/attractionBoard/AttractionBoardDetail.vue";
 import ReviewWriteBox from "@/components/review/ReviewWriteBox.vue";
 import ReviewList from "@/components/review/ReviewList.vue";
-import ThePageNation from "@/components/common/ThePageNation.vue";
 
 export default {
-  name: "AppAttractionBoardDetail",
+  name: "AppAttractionDetail",
   components: {
     AttractionBoardDetail,
-    ReviewList,
     ReviewWriteBox,
-    ThePageNation,
+    ReviewList,
   },
+  data() {
+    return {
+      message: "",
+    };
+  },
+  created() {},
+  methods: {},
 };
 </script>
 

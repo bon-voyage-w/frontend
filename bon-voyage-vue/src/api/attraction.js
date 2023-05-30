@@ -21,6 +21,7 @@ function allAttractionList(success, fail) {
 }
 function AttractionDetailByContentId(contentId, success, fail) {
   attraction.get(`/${contentId}`).then(success).catch(fail);
+  console.log("api ::: attraction detail ");
 }
 export {
   allSidoList,
