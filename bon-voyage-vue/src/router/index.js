@@ -11,12 +11,10 @@ import BoardList from "@/components/board/BoardList";
 import BoardWrite from "@/components/board/BoardWrite";
 import BoardModify from "@/components/board/BoardModify";
 import AppLogin from "@/views/AppLogin";
-import KakaoAuth from "@/components/auth/KakaoAuth"
+import KakaoAuth from "@/components/auth/KakaoAuth";
 import AppSignUp from "@/views/AppSignUp.vue";
 import AppMyPage from "@/views/AppMyPage.vue";
 import BoardView from "@/components/board/BoardView";
-
-
 
 Vue.use(VueRouter);
 
@@ -30,13 +28,6 @@ const routes = [
     path: "/attractions",
     name: "attraction",
     component: AppAttraction,
-    // children: [
-    //   {
-    //     path: "/attractions/:contentId",
-    //     name: "attractiondetail",
-    //     component: AttractionBoardDetail,
-    //   },
-    // ],
   },
   {
     path: "/attractions/:contentId",

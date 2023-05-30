@@ -1,7 +1,13 @@
 <template>
   <div class="placeinfo-nav" @change="searchContentTypeId">
     <li>
-      <input type="radio" value="0" id="0" v-model="selectedContentType" checked />
+      <input
+        type="radio"
+        value="0"
+        id="0"
+        v-model="selectedContentType"
+        checked
+      />
       <label for="0">전체</label>
     </li>
     <li>
@@ -50,7 +56,6 @@ export default {
       console.log("메소드 호출");
       this.getContentTypeId(this.selectedContentType);
       this.getAttractionList(this.conditions);
-      alert("무사귀환");
     },
   },
 };

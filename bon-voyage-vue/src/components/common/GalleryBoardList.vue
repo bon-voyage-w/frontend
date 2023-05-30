@@ -29,6 +29,7 @@ export default {
   },
   created() {
     this.getAllAttractionList();
+    console.log(this.attractions.content);
   },
   methods: {
     ...mapActions(attractionStore, ["getAllAttractionList"]),

@@ -1,7 +1,6 @@
 <template>
   <button class="placeinfo-list-item">
     <router-link
-      @click="selectAttraction"
       :to="{
         name: 'attractiondetail',
         params: { contentId: attraction.contentId },
@@ -17,23 +16,16 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-const attractionStore = "attractionStore";
 export default {
   name: "GalleryBoardListItem",
-
   props: {
     attraction: Object,
   },
   methods: {
-    ...mapActions(attractionStore, ["detailAttraction"]),
-    selectAttraction() {
-      console.log(">>>>>>>>>>>>>>>>>>>> 111111111111111 클릭이벤트 ");
-      this.detailAttraction(this.attraction.contentId);
-    },
     replaceNoImg(e) {
       e.target.src =
         "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
+      console.log("******** ", this.attraction);
     },
   },
 };

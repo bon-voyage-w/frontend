@@ -2,24 +2,31 @@
   <ul>
     <li>
       <div class="review-id">
-        <div class="profile-image">
-          <img :src="userInfo.profileImg" style="width:50px; height: 50px; object-fit: contain;  border-radius: 50%;">
-        </div>
-        <p>김싸피</p>
+        <!-- <div class="profile-image">
+          <img
+            :src="userInfo.profileImg"
+            style="
+              width: 50px;
+              height: 50px;
+              object-fit: contain;
+              border-radius: 50%;
+            "
+          />
+        </div> -->
+        <p>review.writerName</p>
       </div>
-      <p>
-        뭐 한번쯤은 가보기 괜찮은 곳 같아요~!
-      </p>
+      <p>review.reviewContent</p>
+      <p>review.writeDate</p>
     </li>
   </ul>
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 const userStore = "userStore";
 export default {
   name: "ReviewListItem",
-  computed :{
+  computed: {
     ...mapState(userStore, ["userInfo"]),
   },
 };

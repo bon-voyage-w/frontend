@@ -5,9 +5,7 @@ import {
   allAttractionList,
   AttractionDetailByContentId,
 } from "@/api/attraction.js";
-import {
-  myPageLike,
-} from "@/api/user.js"
+import { myPageLike } from "@/api/user.js";
 
 const attractionStore = {
   namespaced: true,
@@ -15,7 +13,7 @@ const attractionStore = {
     sidos: [{ value: 0, text: " --------- 시 --------- " }],
     guguns: [{ value: 0, text: " --------- 도 --------- " }],
     attractions: [],
-    attraction: null,
+    selectedAttractionInfo: [],
     selectedLocation: [],
     conditions: {
       sidoCode: 0,
@@ -26,10 +24,9 @@ const attractionStore = {
     userLikeAttractions: [],
   },
   getters: {
-    getLimitUserLikeAttractions : function (state) {
+    getLimitUserLikeAttractions: function (state) {
       return state.userLikeAttractions;
     },
-
   },
   mutations: {
     // empty
@@ -41,7 +38,7 @@ const attractionStore = {
     },
     CLEAR_ATTRACTION_LIST(state) {
       state.attractions = [];
-      state.attraction = null;
+      state.selectedattraction = null;
     },
     CLEAR_CONDITIONS(state) {
       state.conditions = {
@@ -51,14 +48,7 @@ const attractionStore = {
         contentTypeId: 0,
       };
     },
-    // change conditions
-    SET_CONDITIONS_KEYWORD(state, inputKeyword) {
-      state.conditions.keyword = inputKeyword;
-    },
-    SET_CONDITIONS_CONTENT_TYPE_ID(state, selectedContentType) {
-      console.log("mutation 호출!");
-      state.conditions.contentTypeId = selectedContentType;
-    },
+
     // get
     GET_ALL_SIDO_LIST(state, data) {
       data.forEach((data) => {
@@ -70,18 +60,24 @@ const attractionStore = {
         state.guguns.push({ value: data.gugunCode, text: data.gugunName });
       });
     },
-
+    // change conditions
+    SET_CONDITIONS_KEYWORD(state, inputKeyword) {
+      state.conditions.keyword = inputKeyword;
+    },
+    SET_CONDITIONS_CONTENT_TYPE_ID(state, selectedContentType) {
+      console.log("mutation 호출!");
+      state.conditions.contentTypeId = selectedContentType;
+    },
     SET_ATTRACTION_LIST(state, attractions) {
       state.attractions = attractions;
     },
-    SET_DETAIL_ATTRACTION(state, attraction) {
-      console.log(">>>>>>>>>>>>>>>>>>>> 333333333333 mutation ");
-
-      state.attraction = attraction;
+    SET_SELECTED_ATTRACTION(state, attraction) {
+      state.selectedAttractionInfo = attraction;
+      console.log("mutations ::: ", attraction);
     },
-    SET_USER_LIKE_ATTRACTION_LIST: function (state,attractions){
-      return state.userLikeAttractions=attractions;
-    }
+    SET_USER_LIKE_ATTRACTION_LIST: function (state, attractions) {
+      return (state.userLikeAttractions = attractions);
+    },
   },
   actions: {
     // change
@@ -134,35 +130,35 @@ const attractionStore = {
         }
       );
     },
-    detailAttraction: ({ commit }, contentId) => {
+    selectAttraction: ({ commit }, contentId) => {
       AttractionDetailByContentId(
         contentId,
         ({ data }) => {
-          commit("SET_DETAIL_ATTRACTION", data);
+          commit("SET_SELECTED_ATTRACTION", data);
+          console.log("atcions ::: ", contentId);
         },
         (error) => {
           console.log(error);
         }
       );
-      console.log(">>>>>>>>>>>>>>>>>>>> 2222222222222222 액션 ");
     },
     commitClearGugunList: ({ commit }) => {
       commit("CLEAR_GUGUN_LIST", "");
     },
-    clearAllCondition: ({commit})=>{
-      commit("CLEAR_CONDITIONS","");
+    clearAllCondition: ({ commit }) => {
+      commit("CLEAR_CONDITIONS", "");
     },
-    clearAttractionList: ({commit})=>{
-      commit("SET_ATTRACTION_LIST",null);
+    clearAttractionList: ({ commit }) => {
+      commit("SET_ATTRACTION_LIST", null);
     },
-    async getLikeAttraction ({commit}) {
+    async getLikeAttraction({ commit }) {
       await myPageLike(
-          ({data}) => {
-            commit("SET_USER_LIKE_ATTRACTION_LIST", data);
-          },
-          (error) => {
-            console.log(error);
-          }
+        ({ data }) => {
+          commit("SET_USER_LIKE_ATTRACTION_LIST", data);
+        },
+        (error) => {
+          console.log(error);
+        }
       );
     },
   },

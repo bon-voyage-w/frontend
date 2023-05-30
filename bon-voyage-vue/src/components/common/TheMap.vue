@@ -29,7 +29,10 @@ export default {
       this.attractions.content.forEach((attraction) => {
         let obj = {};
         obj.title = attraction.title;
-        obj.latlng = new kakao.maps.LatLng(attraction.latitude, attraction.longitude);
+        obj.latlng = new kakao.maps.LatLng(
+          attraction.latitude,
+          attraction.longitude
+        );
 
         this.positions.push(obj);
         console.log("@@@@@@@@@@@@@ maker에 넣는 obj " + obj);
@@ -66,7 +69,10 @@ export default {
     loadMap() {
       const container = document.getElementById("map");
       const options = {
-        center: new window.kakao.maps.LatLng(37.501711315447245, 127.04479582018247),
+        center: new window.kakao.maps.LatLng(
+          37.501711315447245,
+          127.04479582018247
+        ),
         level: 6,
       };
 

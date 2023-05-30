@@ -1,28 +1,38 @@
 <template>
   <div>
     <div class="wrap-attraction-detail">
-      <img :src="attractionDetail.attractionInfoDto.firstImage" />
+      <img :src="selectedAttractionInfo.attractionInfoDto.firstImage" />
       <div class="wrap-attraction-detail-text">
-        <button v-if="!isLike" id="like" class="btn-like" @click.prevent="dolike">
+        <button
+          v-if="!isLike"
+          id="like"
+          class="btn-like"
+          @click.prevent="dolike"
+        >
           <font-awesome-icon
             :icon="['far', 'heart']"
             size="2xl"
             style="color: #696969"
           />
         </button>
-        <button v-if="isLike" id="like" class="btn-like" @click.prevent="unlike">
+        <button
+          v-if="isLike"
+          id="like"
+          class="btn-like"
+          @click.prevent="unlike"
+        >
           <font-awesome-icon
-              :icon="['far', 'heart']"
-              size="2xl"
-              style="color: deeppink"
+            :icon="['far', 'heart']"
+            size="2xl"
+            style="color: deeppink"
           />
         </button>
-        <h2>{{ attractionDetail.attractionInfoDto.title }}</h2>
+        <h2>{{ selectedAttractionInfo.attractionInfoDto.title }}</h2>
 
-        <h5>{{ attractionDetail.attractionInfoDto.addr1 }}</h5>
+        <h5>{{ selectedAttractionInfo.attractionInfoDto.addr1 }}</h5>
 
         <p>
-          {{ attractionDetail.overview }}
+          {{ selectedAttractionInfo.overview }}
         </p>
       </div>
     </div>
@@ -30,53 +40,68 @@
 </template>
 
 <script>
-import { AttractionDetailByContentId } from "@/api/attraction";
-import {like, dislike} from "@/api/user";
+// import { AttractionDetailByContentId } from "@/api/attraction";
+import { mapState, mapActions } from "vuex";
+import { like, dislike } from "@/api/user";
+
+const attractionStore = "attractionStore";
+
 export default {
   name: "AttractionBoardDetail",
   data() {
     return {
       attractionDetail: {},
-      isLike:false,
-      selectedId:"",
+      isLike: false,
+      selectedId: "",
     };
   },
-
+  computed: {
+    ...mapState(attractionStore, ["selectedAttractionInfo"]),
+  },
   created() {
-
+    // attraction
     this.selectedId = this.$route.params.contentId;
-    AttractionDetailByContentId(
-      this.selectedId,
-      ({ data }) => {
-        this.attractionDetail = data;
-        console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    // AttractionDetailByContentId(
+    //   // console.log(this.selectedId),
+    //   this.selectedId,
+    //   ({ data }) => {
+    //     this.attractionDetail = data;
+    //     console.log(data);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    this.selectAttraction(this.selectedId);
   },
   methods: {
-    dolike(){
-      like(this.selectedId,({ data }) => {
-        this.isLike=true;
-            console.log(data);
-          },
-          (error) => {
-            console.log(error);
-          });
-    },
-    unlike(){
-      dislike(this.selectedId,({ data }) => {
-            this.isLike=false;
-            console.log(data);
-          },
-          (error) => {
-            console.log(error);
-          });
-    }
-  },
+    ...mapActions(attractionStore, ["selectAttraction"]),
 
+    dolike() {
+      like(
+        this.selectedId,
+        ({ data }) => {
+          this.isLike = true;
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    unlike() {
+      dislike(
+        this.selectedId,
+        ({ data }) => {
+          this.isLike = false;
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+  },
 };
 </script>
 
