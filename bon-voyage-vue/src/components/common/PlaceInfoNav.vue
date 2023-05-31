@@ -42,7 +42,6 @@ export default {
       selectedContentType: null,
     };
   },
-  created() {},
   computed: {
     ...mapState(attractionStore, ["conditions"]),
   },

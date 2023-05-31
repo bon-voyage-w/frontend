@@ -16,9 +16,14 @@ const reviewStore = {
     SET_REVIEW_LIST: (state, reviews) => {
       state.reviews = reviews;
     },
-    SET_REVIEW: (state, review) => {
-      state.review = review;
+    CLEAR_REVIEW_LIST(state) {
+      state.reviews = [];
+
+      console.log("review > mutations > clear ::: ", state.reviews);
     },
+    // SET_REVIEW: (state, review) => {
+    //   state.review = review;
+    // },
   },
   actions: {
     getMyReviewList({ commit }) {
@@ -36,6 +41,12 @@ const reviewStore = {
         contentId,
         ({ data }) => {
           commit("SET_REVIEW_LIST", data);
+          // console.log(
+          //   "review > actions > getAttractionReviewList ::: contentId ",
+          //   contentId
+          // );
+
+          // console.log("review > actions > getAttractionReviewList ::: ", data);
         },
         (error) => {
           console.log(error);

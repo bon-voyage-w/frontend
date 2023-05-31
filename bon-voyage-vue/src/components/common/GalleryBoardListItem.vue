@@ -40,9 +40,7 @@ export default {
 }
 .placeinfo-list-item img {
   width: 100%;
-
-  aspect-ratio: 2/1.6;
-  object-fit: cover;
+  height: 200px;
   margin-bottom: 10px;
 }
 
