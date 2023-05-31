@@ -88,7 +88,8 @@ export default {
 .placeinfo-nav input[type="radio"] {
   display: none;
 }
-.placeinfo-nav input[type="radio"]:checked + label {
+.placeinfo-nav li:checked {
+  box-shadow: inset 0 0 10px red;
   background-color: #eabb4d;
   color: white;
   font-weight: bold;

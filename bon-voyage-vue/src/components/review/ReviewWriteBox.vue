@@ -1,7 +1,7 @@
 <template>
   <div class="wrap-review-write">
     <form>
-      <input v-model="review" type="text" placeholder="리뷰를 써주세요" />
+      <input v-model="InputReview" type="text" placeholder="리뷰를 써주세요" />
     </form>
     <button class="box-search-btn" @click="registerReview">
       <font-awesome-icon
@@ -13,20 +13,56 @@
 </template>
 
 <script>
-import {} from "@/api/";
+import { writeReview } from "@/api/review";
+import { mapState, mapGetters } from "vuex";
+
+const userStore = "userStore";
+const attractionStore = "attractionStore";
+
 export default {
   name: "ReviewWriteBox",
-  components: {},
   data() {
     return {
-      review:"",
+      InputReview: "",
+      review: {
+        reviewContent: "",
+        writerName: "",
+        writerLoginId: "",
+        contentId: "",
+      },
     };
   },
-  methods : {
-    registerReview(){
-
-    }
-  }
+  computed: {
+    ...mapState(userStore, ["isLogin", "userInfo"]),
+    ...mapGetters(attractionStore, ["getAttractionContentId"]),
+  },
+  methods: {
+    registerReview() {
+      if (this.isLogin) {
+        let param = {
+          review: {
+            reviewContent: this.InputReview,
+            writerName: this.userInfo.name,
+            writerLoginId: this.userInfo.loginId,
+            contentId: this.getAttractionContentId,
+          },
+        };
+        console.log("param ::: ", param);
+        writeReview(
+          param,
+          ({ data }) => {
+            console.log(data);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        console.log("리뷰 ::: 로그인 안 된 상태로 넘어감");
+        alert("로그인을 하셔야 리뷰를 작성할 수 있습니다.");
+      }
+    },
+  },
 };
 </script>
 
