@@ -33,35 +33,36 @@ export default {
       contentIdForReview: "getAttractionContentId",
     }),
   },
-  watch: {
-    contentIdForReview() {
-      console.log("watch ::: contentId", this.contentIdForReview);
-      listReview(
-        this.contentIdForReview,
-        ({ data }) => {
-          this.reviews = data;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    },
-  },
+  // watch: {
+  //   contentIdForReview() {
+  //     console.log("watch ::: contentId", this.contentIdForReview);
+  //     listReview(
+  //       this.contentIdForReview,
+  //       ({ data }) => {
+  //         this.reviews = data;
+  //         console.log("review ::: watch ::: reviews");
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  //   },
+  // },
   created() {
     console.log(
       ">>>>> created ::: 111111 ::: contentId",
       this.contentIdForReview
     );
 
-    // listReview(
-    //   this.contentIdForReview,
-    //   ({ data }) => {
-    //     this.reviews = data;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    listReview(
+      this.contentIdForReview,
+      ({ data }) => {
+        this.reviews = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   },
   methods: {
     // ...mapMutations(reviewStore, ["CLEAR_REVIEW_LIST"]),

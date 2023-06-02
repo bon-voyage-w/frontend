@@ -5,18 +5,18 @@
       <h2>오늘의 추천 여행지</h2>
       <p>SNS에서 유명한 펜션부터 5성급 호텔까지 여행은 본 보야지에서!</p>
     </div>
-    <gallery-board-list></gallery-board-list>
+    <attraction-board-list />
   </div>
 </template>
 
 <script>
 import TheCarousel from "@/components/main/TheCarousel";
-import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
+import AttractionBoardList from "@/components/attractionBoard/AttractionBoardList.vue";
 export default {
   name: "AppMain",
   components: {
     TheCarousel,
-    GalleryBoardList,
+    AttractionBoardList,
   },
 };
 </script>

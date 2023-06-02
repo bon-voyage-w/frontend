@@ -7,16 +7,14 @@ import AppAttraction from "@/views/AppAttraction";
 import AppRoute from "@/views/AppRoute";
 import AppAttractionDetail from "@/views/AppAttractionDetail";
 
-// import AttractionBoardDetail from "@/components/attractionBoard/AttractionBoardDetail";
-
-import BoardList from "@/components/board/BoardList";
-import BoardWrite from "@/components/board/BoardWrite";
-import BoardModify from "@/components/board/BoardModify";
+import BoardList from "@/components/notice/BoardList";
+import BoardWrite from "@/components/notice/BoardWrite";
+import BoardModify from "@/components/notice/BoardModify";
 import AppLogin from "@/views/AppLogin";
 import KakaoAuth from "@/components/auth/KakaoAuth";
 import AppSignUp from "@/views/AppSignUp.vue";
 import AppMyPage from "@/views/AppMyPage.vue";
-import BoardView from "@/components/board/BoardView";
+import BoardView from "@/components/notice/BoardView";
 
 Vue.use(VueRouter);
 

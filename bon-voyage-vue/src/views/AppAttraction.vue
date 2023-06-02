@@ -8,7 +8,7 @@
     <search-box-vue />
     <the-map-vue />
     <place-info-nav-vue />
-    <gallery-board-list-vue />
+    <attraction-board-list-vue />
     <the-page-nation-vue />
   </div>
 </template>
@@ -18,7 +18,7 @@ import LocationSelectBoxVue from "@/components/common/LocationSelectBox.vue";
 import SearchBoxVue from "@/components/common/SearchBox.vue";
 import TheMapVue from "@/components/common/TheMap.vue";
 import PlaceInfoNavVue from "@/components/common/PlaceInfoNav.vue";
-import GalleryBoardListVue from "@/components/common/GalleryBoardList.vue";
+import AttractionBoardListVue from "@/components/attractionBoard/AttractionBoardList.vue";
 import ThePageNationVue from "@/components/common/ThePageNation.vue";
 export default {
   name: "AppAttraction",
@@ -28,7 +28,7 @@ export default {
     TheMapVue,
     PlaceInfoNavVue,
     ThePageNationVue,
-    GalleryBoardListVue,
+    AttractionBoardListVue,
   },
 
   created() {},

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import GalleryBoardListItem from "@/components/common/GalleryBoardListItem.vue";
+import GalleryBoardListItem from "@/components/attractionBoard/AttractionBoardListItem.vue";
 import { mapState, mapActions } from "vuex";
 
 const attractionStore = "attractionStore";

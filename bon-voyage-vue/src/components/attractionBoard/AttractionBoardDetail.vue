@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="wrap-attraction-detail">
-      <img :src="selectedAttractionInfo.attractionInfoDto.firstImage" />
+    <div class="wrap-attraction-detail" v-if="isReady">
+      <img
+        :src="attractionDetail.attractionInfoDto.firstImage"
+        @error="replaceNoImg"
+      />
       <div class="wrap-attraction-detail-text">
         <button
           v-if="!isLike"
@@ -27,12 +30,12 @@
             style="color: deeppink"
           />
         </button>
-        <h2>{{ selectedAttractionInfo.attractionInfoDto.title }}</h2>
+        <h2>{{ attractionDetail.attractionInfoDto.title }}</h2>
 
-        <h5>{{ selectedAttractionInfo.attractionInfoDto.addr1 }}</h5>
+        <h5>{{ attractionDetail.attractionInfoDto.addr1 }}</h5>
 
         <p>
-          {{ selectedAttractionInfo.overview }}
+          {{ attractionDetail.overview }}
         </p>
       </div>
     </div>
@@ -49,18 +52,27 @@ export default {
   name: "AttractionBoardDetail",
   data() {
     return {
-      attractionDetail: {},
+      attractionDetail: [],
       isLike: false,
-      selectedId: "",
+      selectedId: 0,
+      isReady: false,
     };
   },
-
+  watch: {
+    selectedAttractionInfo() {
+      console.log("watch ::: attraction 상세정보 렌더링 문제 해결 목적");
+      this.attractionDetail = this.selectedAttractionInfo;
+      this.isReady = true;
+    },
+  },
   computed: {
     ...mapState(attractionStore, ["selectedAttractionInfo"]),
   },
   created() {
     this.selectedId = this.$route.params.contentId;
     this.selectAttraction(this.selectedId);
+    this.attractionDetail = this.selectedAttractionInfo;
+    console.log("created ::: 222 ::: selAttInfo", this.selectedAttractionInfo);
   },
   methods: {
     ...mapActions(attractionStore, ["selectAttraction"]),
@@ -88,6 +100,11 @@ export default {
           console.log(error);
         }
       );
+    },
+
+    replaceNoImg(e) {
+      e.target.src =
+        "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
     },
   },
 };

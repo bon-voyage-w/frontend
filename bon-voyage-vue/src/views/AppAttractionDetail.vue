@@ -23,8 +23,6 @@ export default {
       message: "",
     };
   },
-  created() {},
-  methods: {},
 };
 </script>
 

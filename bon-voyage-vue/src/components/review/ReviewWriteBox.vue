@@ -40,12 +40,10 @@ export default {
     registerReview() {
       if (this.isLogin) {
         let param = {
-          review: {
-            reviewContent: this.InputReview,
-            writerName: this.userInfo.name,
-            writerLoginId: this.userInfo.loginId,
-            contentId: this.getAttractionContentId,
-          },
+          reviewContent: this.InputReview,
+          writerName: this.userInfo.name,
+          writerLoginId: this.userInfo.loginId,
+          contentId: this.getAttractionContentId,
         };
         console.log("param ::: ", param);
         writeReview(

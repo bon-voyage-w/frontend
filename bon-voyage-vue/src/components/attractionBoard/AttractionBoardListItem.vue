@@ -41,6 +41,7 @@ export default {
 .placeinfo-list-item img {
   width: 100%;
   height: 200px;
+  object-fit: fill;
   margin-bottom: 10px;
 }
 

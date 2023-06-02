@@ -4,18 +4,18 @@
       <h2>여행 경로 공유 게시판</h2>
       <p>내가 다녀온 여행 경로를 공유해보세요</p>
     </div>
-    <gallery-board-list />
+    <attraction-board-list />
     <the-page-nation-vue />
   </div>
 </template>
 
 <script>
-import GalleryBoardList from "@/components/common/GalleryBoardList.vue";
+import AttractionBoardList from "@/components/attractionBoard/AttractionBoardList.vue";
 import ThePageNationVue from "@/components/common/ThePageNation.vue";
 export default {
   name: "AppShareBoard",
   components: {
-    GalleryBoardList,
+    AttractionBoardList,
     ThePageNationVue,
   },
   data() {

@@ -5,7 +5,9 @@
       <p>문의글은 1:1 문의 게시판에 남겨주세요</p>
     </div>
 
-    <button type="button" class="btn-notice-write" @click="movePage">글쓰기</button>
+    <button type="button" class="btn-notice-write" @click="movePage">
+      글쓰기
+    </button>
     <main>
       <div v-if="articles.length">
         <table>
@@ -41,7 +43,7 @@
 </template>
 
 <script>
-import BoardListItem from "@/components/board/BoardListItem";
+import BoardListItem from "@/components/notice/BoardListItem";
 import { listArticle } from "@/api/notice";
 import ThePageNationVue from "../common/ThePageNation.vue";
 

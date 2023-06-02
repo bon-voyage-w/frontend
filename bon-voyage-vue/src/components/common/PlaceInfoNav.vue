@@ -1,30 +1,40 @@
 <template>
   <div class="placeinfo-nav" @change="searchContentTypeId">
     <li>
-      <input
-        type="radio"
-        value="0"
-        id="0"
-        v-model="selectedContentType"
-        checked
-      />
-      <label for="0">전체</label>
+      <label for="0">
+        <input
+          type="radio"
+          value="0"
+          id="0"
+          v-model="selectedContentType"
+          checked
+        />
+        전체</label
+      >
     </li>
     <li>
-      <input type="radio" value="12" id="12" v-model="selectedContentType" />
-      <label for="12">관광지</label>
+      <label for="12">
+        <input type="radio" value="12" id="12" v-model="selectedContentType" />
+        관광지</label
+      >
     </li>
     <li>
-      <input type="radio" value="32" id="32" v-model="selectedContentType" />
-      <label for="32">숙박</label>
+      <label for="32">
+        <input type="radio" value="32" id="32" v-model="selectedContentType" />
+        숙박</label
+      >
     </li>
     <li>
-      <input type="radio" value="39" id="39" v-model="selectedContentType" />
-      <label for="39">음식점</label>
+      <label for="39">
+        <input type="radio" value="39" id="39" v-model="selectedContentType" />
+        음식점</label
+      >
     </li>
     <li>
-      <input type="radio" value="14" id="14" v-model="selectedContentType" />
-      <label for="14">여가</label>
+      <label for="14">
+        <input type="radio" value="14" id="14" v-model="selectedContentType" />
+        여가</label
+      >
     </li>
   </div>
 </template>
@@ -42,6 +52,7 @@ export default {
       selectedContentType: null,
     };
   },
+
   computed: {
     ...mapState(attractionStore, ["conditions"]),
   },
@@ -52,7 +63,6 @@ export default {
       "getContentTypeId",
     ]),
     searchContentTypeId() {
-      console.log("메소드 호출");
       this.getContentTypeId(this.selectedContentType);
       this.getAttractionList(this.conditions);
     },
@@ -87,10 +97,14 @@ export default {
 .placeinfo-nav input[type="radio"] {
   display: none;
 }
-.placeinfo-nav li:checked {
+.placeinfo-nav label {
+  cursor: pointer;
+  width: 100%;
+}
+/* .placeinfo-nav li:checked {
   box-shadow: inset 0 0 10px red;
   background-color: #eabb4d;
   color: white;
   font-weight: bold;
-}
+} */
 </style>
