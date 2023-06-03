@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import ReviewWriteBox from "../review/ReviewWriteBox.vue";
-import ReviewList from "../review/ReviewList.vue";
+import ReviewWriteBox from "../components/review/ReviewWriteBox.vue";
+import ReviewList from "../components/review/ReviewList.vue";
 import { mapState, mapActions } from "vuex";
 import { like, dislike } from "@/api/user";
 
