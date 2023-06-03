@@ -39,10 +39,14 @@
         </p>
       </div>
     </div>
+    <ReviewWriteBox />
+    <ReviewList :selectedId="selectedId" />
   </div>
 </template>
 
 <script>
+import ReviewWriteBox from "../review/ReviewWriteBox.vue";
+import ReviewList from "../review/ReviewList.vue";
 import { mapState, mapActions } from "vuex";
 import { like, dislike } from "@/api/user";
 
@@ -50,12 +54,17 @@ const attractionStore = "attractionStore";
 
 export default {
   name: "AttractionBoardDetail",
+  components: {
+    ReviewWriteBox,
+    ReviewList,
+  },
   data() {
     return {
       attractionDetail: [],
       isLike: false,
       selectedId: 0,
       isReady: false,
+      isContentIdReady: false,
     };
   },
   watch: {
@@ -63,6 +72,7 @@ export default {
       console.log("watch ::: attraction 상세정보 렌더링 문제 해결 목적");
       this.attractionDetail = this.selectedAttractionInfo;
       this.isReady = true;
+      this.isContentIdReady = true;
     },
   },
   computed: {

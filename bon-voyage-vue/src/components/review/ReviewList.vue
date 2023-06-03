@@ -10,13 +10,11 @@
 
 <script>
 import ReviewListItem from "@/components/review/ReviewListItem";
-// import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 import { mapGetters } from "vuex";
 
 import { listReview } from "@/api/review";
 
 const attractionStore = "attractionStore";
-// const reviewStore = "reviewStore";
 
 export default {
   name: "ReviewList",
@@ -26,36 +24,17 @@ export default {
       reviews: [],
     };
   },
-
+  props: {
+    selectedId: Number,
+  },
   computed: {
-    // ...mapState(reviewStore, ["reviews"]),
     ...mapGetters(attractionStore, {
       contentIdForReview: "getAttractionContentId",
     }),
   },
-  // watch: {
-  //   contentIdForReview() {
-  //     console.log("watch ::: contentId", this.contentIdForReview);
-  //     listReview(
-  //       this.contentIdForReview,
-  //       ({ data }) => {
-  //         this.reviews = data;
-  //         console.log("review ::: watch ::: reviews");
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  //   },
-  // },
   created() {
-    console.log(
-      ">>>>> created ::: 111111 ::: contentId",
-      this.contentIdForReview
-    );
-
     listReview(
-      this.contentIdForReview,
+      this.selectedId,
       ({ data }) => {
         this.reviews = data;
       },
@@ -63,10 +42,6 @@ export default {
         console.log(error);
       }
     );
-  },
-  methods: {
-    // ...mapMutations(reviewStore, ["CLEAR_REVIEW_LIST"]),
-    // ...mapActions(reviewStore, ["getAttractionReviewList"]),
   },
 };
 </script>
