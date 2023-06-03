@@ -2,13 +2,14 @@
   <div class="wrap-review-write">
     <form>
       <input v-model="InputReview" type="text" placeholder="리뷰를 써주세요" />
+
+      <button class="box-search-btn" @click.prevent="registerReview">
+        <font-awesome-icon
+          :icon="['fas', 'paper-plane']"
+          style="color: #eabb4d"
+        />
+      </button>
     </form>
-    <button class="box-search-btn" @click="registerReview">
-      <font-awesome-icon
-        :icon="['fas', 'paper-plane']"
-        style="color: #eabb4d"
-      />
-    </button>
   </div>
 </template>
 
@@ -50,13 +51,13 @@ export default {
           param,
           ({ data }) => {
             console.log(data);
+            this.$router.go(this.$router.currentRoute);
           },
           (error) => {
             console.log(error);
           }
         );
       } else {
-        console.log("리뷰 ::: 로그인 안 된 상태로 넘어감");
         alert("로그인을 하셔야 리뷰를 작성할 수 있습니다.");
       }
     },

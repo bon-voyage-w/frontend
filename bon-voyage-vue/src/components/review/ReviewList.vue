@@ -25,7 +25,7 @@ export default {
     };
   },
   props: {
-    selectedId: Number,
+    selectedId: String,
   },
   computed: {
     ...mapGetters(attractionStore, {
