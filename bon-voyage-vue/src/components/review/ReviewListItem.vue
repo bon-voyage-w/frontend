@@ -1,9 +1,10 @@
 <template>
   <ul>
     <li>
-      <div class="review-id">
-        <div class="profile-image">
-          <!-- <img
+      <div class="wrap-review-top">
+        <div class="wrap-review-profile">
+          <div class="profile-image">
+            <!-- <img
             :src="userInfo.profileImg"
             style="
               width: 50px;
@@ -13,20 +14,28 @@
             "
             @error="replaceNoImg"
           /> -->
+          </div>
+          <p>{{ review.writerName }}</p>
         </div>
-        <p>{{ review.writerName }}</p>
+        <ReviewListItemButton />
       </div>
-      <p>{{ review.reviewContent }}</p>
-      <p>
-        {{ review.writeDate }}
-      </p>
+      <div class="wrap-review-bottom">
+        <p>{{ review.reviewContent }}</p>
+        <p>
+          {{ review.writeDate }}
+        </p>
+      </div>
     </li>
   </ul>
 </template>
 
 <script>
+import ReviewListItemButton from "@/components/review/ReviewListItemButton.vue";
 export default {
   name: "ReviewListItem",
+  comments: {
+    ReviewListItemButton,
+  },
   props: {
     review: Object,
   },
@@ -36,6 +45,7 @@ export default {
     //     "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg";
     // },
   },
+  components: { ReviewListItemButton },
 };
 </script>
 
@@ -43,10 +53,15 @@ export default {
 ul li {
   margin-bottom: 40px;
 }
-.review-id {
+.wrap-review-profile {
+  display: flex;
+  vertical-align: middle;
+}
+.wrap-review-top {
   margin-bottom: 10px;
   align-items: center;
   display: flex;
+  justify-content: space-between;
 }
 .profile-image {
   width: 50px;
@@ -59,7 +74,10 @@ ul li {
   object-fit: cover;
   border-radius: 50%;
 }
-.review-id p {
-  margin: 0 0 0 8px;
+.wrap-review-top p {
+  margin: auto 8px;
+}
+.wrap-review-bottom p {
+  margin-left: 60px;
 }
 </style>
