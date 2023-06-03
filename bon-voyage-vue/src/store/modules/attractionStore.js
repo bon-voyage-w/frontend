@@ -75,7 +75,6 @@ const attractionStore = {
     },
     SET_SELECTED_ATTRACTION(state, attraction) {
       state.selectedAttractionInfo = attraction;
-      console.log("mutations ::: 선택된 관광지 정보를 state에 담는다");
     },
     SET_USER_LIKE_ATTRACTION_LIST: function (state, attractions) {
       return (state.userLikeAttractions = attractions);

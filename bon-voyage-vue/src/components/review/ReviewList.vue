@@ -10,11 +10,11 @@
 
 <script>
 import ReviewListItem from "@/components/review/ReviewListItem";
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 
 import { listReview } from "@/api/review";
 
-const attractionStore = "attractionStore";
+// const attractionStore = "attractionStore";
 
 export default {
   name: "ReviewList",
@@ -25,12 +25,12 @@ export default {
     };
   },
   props: {
-    selectedId: String,
+    selectedId: Number,
   },
   computed: {
-    ...mapGetters(attractionStore, {
-      contentIdForReview: "getAttractionContentId",
-    }),
+    // ...mapGetters(attractionStore, {
+    //   contentIdForReview: "getAttractionContentId",
+    // }),
   },
   created() {
     listReview(

@@ -69,7 +69,6 @@ export default {
   },
   watch: {
     selectedAttractionInfo() {
-      console.log("watch ::: attraction 상세정보 렌더링 문제 해결 목적");
       this.attractionDetail = this.selectedAttractionInfo;
       this.isReady = true;
       this.isContentIdReady = true;
@@ -82,7 +81,6 @@ export default {
     this.selectedId = this.$route.params.contentId;
     this.selectAttraction(this.selectedId);
     this.attractionDetail = this.selectedAttractionInfo;
-    console.log("created ::: 222 ::: selAttInfo", this.selectedAttractionInfo);
   },
   methods: {
     ...mapActions(attractionStore, ["selectAttraction"]),

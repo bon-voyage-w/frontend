@@ -17,7 +17,10 @@
           </div>
           <p>{{ review.writerName }}</p>
         </div>
-        <ReviewListItemButton />
+        <ReviewListItemButton
+          :writerLoginId="review.writerLoginId"
+          :currentReviewId="review.reviewId"
+        />
       </div>
       <div class="wrap-review-bottom">
         <p>{{ review.reviewContent }}</p>
@@ -33,12 +36,17 @@
 import ReviewListItemButton from "@/components/review/ReviewListItemButton.vue";
 export default {
   name: "ReviewListItem",
-  comments: {
-    ReviewListItemButton,
+  data() {
+    return {
+      writerLoginId: "",
+      currentReviewId: 0,
+    };
   },
+
   props: {
     review: Object,
   },
+
   methods: {
     // replaceNoImg(e) {
     //   e.target.src =

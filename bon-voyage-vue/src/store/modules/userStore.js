@@ -1,4 +1,3 @@
-//import router from "@/router";
 import { login, findUserInfoById, logout } from "@/api/user";
 
 const userStore = {

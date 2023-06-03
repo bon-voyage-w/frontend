@@ -46,7 +46,6 @@ export default {
           writerLoginId: this.userInfo.loginId,
           contentId: this.getAttractionContentId,
         };
-        console.log("param ::: ", param);
         writeReview(
           param,
           ({ data }) => {
