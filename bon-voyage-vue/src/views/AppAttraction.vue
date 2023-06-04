@@ -6,7 +6,7 @@
     </div>
     <location-select-box-vue />
     <search-box-vue />
-    <the-map-vue />
+    <attraction-board-map />
     <place-info-nav-vue />
     <attraction-board-list-vue />
     <the-page-nation-vue />
@@ -16,7 +16,7 @@
 <script>
 import LocationSelectBoxVue from "@/components/common/LocationSelectBox.vue";
 import SearchBoxVue from "@/components/common/SearchBox.vue";
-import TheMapVue from "@/components/common/TheMap.vue";
+import AttractionBoardMap from "@/components/attractionBoard/AttractionBoardMap.vue";
 import PlaceInfoNavVue from "@/components/common/PlaceInfoNav.vue";
 import AttractionBoardListVue from "@/components/attractionBoard/AttractionBoardList.vue";
 import ThePageNationVue from "@/components/common/ThePageNation.vue";
@@ -25,7 +25,7 @@ export default {
   components: {
     LocationSelectBoxVue,
     SearchBoxVue,
-    TheMapVue,
+    AttractionBoardMap,
     PlaceInfoNavVue,
     ThePageNationVue,
     AttractionBoardListVue,
