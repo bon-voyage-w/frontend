@@ -38,20 +38,18 @@
         </table>
       </div>
     </main>
-    <the-page-nation-vue />
+    \
   </div>
 </template>
 
 <script>
 import BoardListItem from "@/components/notice/BoardListItem";
 import { listArticle } from "@/api/notice";
-import ThePageNationVue from "../common/ThePageNation.vue";
 
 export default {
   name: "BoardList",
   components: {
     BoardListItem,
-    ThePageNationVue,
   },
   data() {
     return {

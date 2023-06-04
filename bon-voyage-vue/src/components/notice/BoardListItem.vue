@@ -1,8 +1,10 @@
 <template>
   <tr>
-    <td>{{ index }}</td>
+    <td>{{ article.noticeId }}</td>
     <td>
-      <router-link :to="{ name: 'boardView', params: { noticeId: article.noticeId } }">
+      <router-link
+        :to="{ name: 'boardView', params: { noticeId: article.noticeId } }"
+      >
         {{ article.title }}
       </router-link>
     </td>
@@ -29,5 +31,9 @@ tr td {
 }
 tr td:not(:nth-child(2), :nth-child(3)) {
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
