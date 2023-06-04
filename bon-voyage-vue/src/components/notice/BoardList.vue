@@ -38,7 +38,6 @@
         </table>
       </div>
     </main>
-    \
   </div>
 </template>
 

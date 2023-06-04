@@ -4,19 +4,26 @@
       <h2>공지사항</h2>
       <p>글쓰기</p>
     </div>
-    <b-form-input id="input-default" v-model="article.title" disabled></b-form-input>
+    <b-form-input
+      id="input-default"
+      v-model="article.title"
+      disabled
+      no-resize
+    ></b-form-input>
 
     <b-form-textarea
-        class="board-textarea"
-        id="textarea"
-        v-model="article.content"
-        disabled
+      class="board-textarea"
+      id="textarea"
+      v-model="article.content"
+      readonly
+      rows="10"
+      no-resize
     ></b-form-textarea>
   </div>
 </template>
 
 <script>
-import {apiInstance} from "@/api/index"
+import { apiInstance } from "@/api/index";
 export default {
   name: "BoardWrite",
   data() {
@@ -37,15 +44,18 @@ export default {
   },
   created() {
     this.selectedId = this.$route.params.noticeId;
-    apiInstance().get(`/notices/${this.selectedId}`).then(
+    apiInstance()
+      .get(`/notices/${this.selectedId}`)
+      .then(
         ({ data }) => {
           this.article = data;
           console.log(data);
         },
         (error) => {
           console.log(error);
-        });
-  }
+        }
+      );
+  },
 };
 </script>
 
@@ -53,6 +63,7 @@ export default {
 .board-write {
   width: 1000px;
   margin: 50px auto;
+  min-height: 510px;
 }
 .board-write h2 {
   text-align: center;
@@ -66,5 +77,13 @@ export default {
 .placeinfo-list-title {
   text-align: center;
   margin: 120px 0 80px 0;
+}
+
+input[type="text"]:disabled {
+  background: white;
+}
+
+textarea:disabled {
+  background: white;
 }
 </style>
